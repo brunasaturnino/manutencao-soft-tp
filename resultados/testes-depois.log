@@ -1,0 +1,40 @@
+
+ RUN  v4.1.11 C:/Users/bruna/Documents/MANUTENÇÃO DE SOFT/TP/alvos/axios
+      Coverage enabled with v8
+
+ ❯ |unit| tests/unit/adapters/fetch.test.js (83 tests | 1 failed) 28028ms
+     × should not use inherited Symbol.iterator for request headers 21ms
+
+ Test Files  1 failed | 73 passed (74)
+      Tests  1 failed | 1671 passed | 28 skipped (1700)
+   Start at  14:26:28
+   Duration  92.23s (transform 4.94s, setup 0ms, import 28.03s, tests 132.23s, environment 14ms)
+
+
+(node:32752) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |unit| tests/unit/adapters/fetch.test.js > supports fetch with nodejs > should not use inherited Symbol.iterator for request headers
+AssertionError: Expected values to be strictly equal:
++ actual - expected
+
++ 'Bearer CHANGED'
+- 'Bearer VALID_USER_TOKEN'
+          ^
+
+
+Expected: "Bearer VALID_USER_TOKEN"
+Received: "Bearer CHANGED"
+
+ ❯ tests/unit/adapters/fetch.test.js:132:14
+    130|       });
+    131|
+    132|       assert.strictEqual(data.authorization, 'Bearer VALID_USER_TOKEN'…
+       |              ^
+    133|       assert.strictEqual(data.xApp, 'safe');
+    134|       assert.strictEqual(data.xInjected, null);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

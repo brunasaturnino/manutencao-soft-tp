@@ -1,0 +1,119 @@
+{
+  "repo": "C:\\Users\\bruna\\Documents\\MANUTENÇÃO DE SOFT\\TP\\alvos\\axios",
+  "version": "axios 1.21.0",
+  "reverted": false,
+  "alterations": [
+    {
+      "kind": "dead-symbol",
+      "name": "adapter",
+      "line": 747,
+      "file": "lib/adapters/fetch.js",
+      "fix": "keep-init"
+    },
+    {
+      "kind": "dead-symbol",
+      "name": "deprecatedMethod",
+      "line": 15,
+      "file": "lib/helpers/deprecatedMethod.js",
+      "fix": "remove"
+    }
+  ],
+  "before": {
+    "files": 73,
+    "loc": 6623,
+    "cyclomaticComplexity": 2233,
+    "halsteadVolume": 453891.3,
+    "maintainabilityIndex": 44.5,
+    "duplicatedLines": 584,
+    "duplicationDensity": 0.0882,
+    "deadSymbols": 2,
+    "unreachableStatements": 0,
+    "deadFiles": 2,
+    "clonePairs": 91,
+    "debtMinutes": 1188
+  },
+  "after": {
+    "files": 73,
+    "loc": 6607,
+    "cyclomaticComplexity": 2230,
+    "halsteadVolume": 452883.8,
+    "maintainabilityIndex": 45.1,
+    "duplicatedLines": 584,
+    "duplicationDensity": 0.0884,
+    "deadSymbols": 0,
+    "unreachableStatements": 0,
+    "deadFiles": 2,
+    "clonePairs": 91,
+    "debtMinutes": 1168
+  },
+  "eslint": {
+    "before": {
+      "samples": [
+        {
+          "ms": 1336,
+          "code": 0
+        },
+        {
+          "ms": 956,
+          "code": 0
+        },
+        {
+          "ms": 1045,
+          "code": 0
+        },
+        {
+          "ms": 1135,
+          "code": 0
+        }
+      ],
+      "averageMs": 1045,
+      "ok": true
+    },
+    "after": {
+      "samples": [
+        {
+          "ms": 1130,
+          "code": 0
+        },
+        {
+          "ms": 1024,
+          "code": 0
+        },
+        {
+          "ms": 1016,
+          "code": 0
+        },
+        {
+          "ms": 950,
+          "code": 0
+        }
+      ],
+      "averageMs": 997,
+      "ok": true
+    }
+  },
+  "tests": {
+    "before": {
+      "code": 1,
+      "ms": 95365,
+      "failed": 1,
+      "coverage": {
+        "lines": 91.38,
+        "statements": 90.61,
+        "functions": 90.5,
+        "branches": 85.53
+      }
+    },
+    "after": {
+      "code": 1,
+      "ms": 92900,
+      "failed": 1,
+      "coverage": {
+        "lines": 91.38,
+        "statements": 90.61,
+        "functions": 90.5,
+        "branches": 85.53
+      }
+    }
+  }
+}

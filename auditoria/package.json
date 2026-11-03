@@ -1,0 +1,17 @@
+{
+  "name": "auditoria-smells",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Auditoria de duplicação estrutural e código morto",
+  "scripts": {
+    "test": "node --test test/detector.test.js",
+    "scan": "node src/cli.js scan",
+    "apply": "node src/cli.js apply",
+    "evaluate": "node src/cli.js evaluate"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.28.5",
+    "@babel/traverse": "^7.28.5"
+  }
+}

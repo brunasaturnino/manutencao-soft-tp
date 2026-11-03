@@ -1,0 +1,62 @@
+Ficheiros analisados: 73
+Linhas de código: 6623
+Complexidade ciclomática: 2233
+Volume de Halstead: 453891.3
+Índice de manutenibilidade (0–100): 0
+Linhas em clones de tipo 1 ou 2: 584
+Densidade de duplicação: 0.0882
+Símbolos mortos: 3
+Instruções inalcançáveis: 0
+Ficheiros não alcançáveis: 2
+Pares de clones: 91
+Dívida estimada de remediação: 1198 min
+
+Código morto e inalcançável:
+  lib/adapters/fetch.js:747  adapter  [dead-symbol]  Export «adapter» não é importado pelo entry público nem pelos testes. A inicialização tem efeito e é preservada.
+  lib/env/classes/FormData.js:1  lib/env/classes/FormData.js  [dead-file]  Módulo não alcançável a partir dos entry points públicos nem dos testes. Não é apagado: pode ser carregado por caminho dinâmico.
+  lib/helpers/deprecatedMethod.js:1  lib/helpers/deprecatedMethod.js  [dead-file]  Módulo não alcançável a partir dos entry points públicos nem dos testes. Não é apagado: pode ser carregado por caminho dinâmico.
+  lib/helpers/deprecatedMethod.js:15  deprecatedMethod  [dead-symbol]  Export «deprecatedMethod» não é importado pelo entry público nem pelos testes.
+  lib/helpers/trackStream.js:48  bytes  [dead-symbol]  Variável «bytes» não é lida.
+
+Duplicação:
+  tipo 2  lib/core/AxiosHeaders.js:33-60  ↔  lib/helpers/sanitizeHeaderValue.js:3-30  (117 tokens, só tokens)
+  tipo 1  lib/helpers/estimateDataURLDecodedBytes.js:63-68  ↔  lib/helpers/estimateDataURLDecodedBytes.js:84-90  (68 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-171  ↔  lib/core/mergeConfig.js:172-186  (60 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-171  ↔  lib/core/mergeConfig.js:173-187  (60 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-170  ↔  lib/core/mergeConfig.js:171-184  (56 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-169  ↔  lib/core/mergeConfig.js:170-182  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-170  ↔  lib/core/mergeConfig.js:170-183  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:158-171  ↔  lib/core/mergeConfig.js:171-184  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-170  ↔  lib/core/mergeConfig.js:170-183  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:158-171  ↔  lib/core/mergeConfig.js:171-184  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-170  ↔  lib/core/mergeConfig.js:170-183  (52 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:158-171  ↔  lib/core/mergeConfig.js:171-184  (52 tokens, só tokens)
+  tipo 2  lib/adapters/fetch.js:46-64  ↔  lib/adapters/http.js:266-284  (51 tokens, só tokens)
+  tipo 1  lib/adapters/fetch.js:274-280  ↔  lib/adapters/http.js:1026-1031  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-168  ↔  lib/core/mergeConfig.js:169-180  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:161-172  ↔  lib/core/mergeConfig.js:173-184  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-169  ↔  lib/core/mergeConfig.js:169-181  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:160-172  ↔  lib/core/mergeConfig.js:172-184  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-169  ↔  lib/core/mergeConfig.js:169-181  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:160-172  ↔  lib/core/mergeConfig.js:172-184  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-169  ↔  lib/core/mergeConfig.js:169-181  (48 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:160-172  ↔  lib/core/mergeConfig.js:172-184  (48 tokens, só tokens)
+  tipo 1  lib/adapters/fetch.js:46-64  ↔  lib/adapters/http.js:266-284  (46 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-167  ↔  lib/core/mergeConfig.js:168-178  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:163-173  ↔  lib/core/mergeConfig.js:174-184  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-168  ↔  lib/core/mergeConfig.js:168-179  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:162-173  ↔  lib/core/mergeConfig.js:173-184  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-168  ↔  lib/core/mergeConfig.js:168-179  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:162-173  ↔  lib/core/mergeConfig.js:173-184  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-168  ↔  lib/core/mergeConfig.js:168-179  (44 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:162-173  ↔  lib/core/mergeConfig.js:173-184  (44 tokens, só tokens)
+  tipo 2  lib/adapters/fetch.js:33-52  ↔  lib/helpers/resolveConfig.js:10-25  (43 tokens, só tokens)
+  tipo 2  lib/core/AxiosError.js:263-269  ↔  lib/core/AxiosError.js:270-276  (42 tokens, só tokens)
+  tipo 2  lib/adapters/http.js:687-692  ↔  lib/helpers/resolveConfig.js:37-42  (41 tokens, só tokens)
+  tipo 2  lib/adapters/http.js:306-312  ↔  lib/adapters/http.js:312-318  (40 tokens, AST)
+  tipo 2  lib/core/mergeConfig.js:157-166  ↔  lib/core/mergeConfig.js:167-176  (40 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:165-174  ↔  lib/core/mergeConfig.js:175-184  (40 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-167  ↔  lib/core/mergeConfig.js:167-177  (40 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:164-174  ↔  lib/core/mergeConfig.js:174-184  (40 tokens, só tokens)
+  tipo 2  lib/core/mergeConfig.js:157-167  ↔  lib/core/mergeConfig.js:167-177  (40 tokens, só tokens)
+  … 51 pares omitidos

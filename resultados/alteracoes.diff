@@ -1,0 +1,37 @@
+diff --git a/lib/adapters/fetch.js b/lib/adapters/fetch.js
+index a197a1d7..2c595589 100644
+--- a/lib/adapters/fetch.js
++++ b/lib/adapters/fetch.js
+@@ -744,6 +744,5 @@ export const getFetch = (config) => {
+   return target;
+ };
+ 
+-const adapter = getFetch();
++getFetch();
+ 
+-export default adapter;
+diff --git a/lib/helpers/deprecatedMethod.js b/lib/helpers/deprecatedMethod.js
+index ec112de2..7b5e14ed 100644
+--- a/lib/helpers/deprecatedMethod.js
++++ b/lib/helpers/deprecatedMethod.js
+@@ -12,20 +12,3 @@
+  *
+  * @returns {void}
+  */
+-export default function deprecatedMethod(method, instead, docs) {
+-  try {
+-    console.warn(
+-      'DEPRECATED method `' +
+-        method +
+-        '`.' +
+-        (instead ? ' Use `' + instead + '` instead.' : '') +
+-        ' This method will be removed in a future release.'
+-    );
+-
+-    if (docs) {
+-      console.warn('For more information about usage see ' + docs);
+-    }
+-  } catch (e) {
+-    /* Ignore */
+-  }
+-}
