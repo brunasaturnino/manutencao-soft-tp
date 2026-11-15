@@ -1,0 +1,311 @@
+{
+  "duplicates": [
+    {
+      "firstFile": {
+        "end": 22,
+        "endLoc": {
+          "column": 14,
+          "line": 22,
+          "position": 427
+        },
+        "name": "index.js",
+        "start": 7,
+        "startLoc": {
+          "column": 2,
+          "line": 7,
+          "position": 218
+        }
+      },
+      "format": "javascript",
+      "fragment": "  Axios,\n  AxiosError,\n  CanceledError,\n  isCancel,\n  CancelToken,\n  VERSION,\n  all,\n  Cancel,\n  isAxiosError,\n  spread,\n  toFormData,\n  AxiosHeaders,\n  HttpStatusCode,\n  formToJSON,\n  getAdapter,\n  mergeConfig,",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 16,
+      "secondFile": {
+        "end": 44,
+        "endLoc": {
+          "column": 14,
+          "line": 44,
+          "position": 700
+        },
+        "name": "index.js",
+        "start": 29,
+        "startLoc": {
+          "column": 2,
+          "line": 29,
+          "position": 491
+        }
+      },
+      "tokens": 32
+    },
+    {
+      "firstFile": {
+        "end": 52,
+        "endLoc": {
+          "column": 5,
+          "line": 52,
+          "position": 1791
+        },
+        "name": "adapters/fetch.js",
+        "start": 33,
+        "startLoc": {
+          "column": 28,
+          "line": 33,
+          "position": 1071
+        }
+      },
+      "format": "javascript",
+      "fragment": "const { isFunction } = utils;\n\n/**\n * Encode a UTF-8 string to a Latin-1 byte string for use with btoa().\n * This is a modern replacement for the deprecated unescape(encodeURIComponent(str)) pattern.\n *\n * @param {string} str The string to encode\n *\n * @returns {string} UTF-8 bytes as a Latin-1 string\n */\nconst encodeUTF8 = (str) =>\n  encodeURIComponent(str).replace(/%([0-9A-F]{2})/gi, (_, hex) =>\n    String.fromCharCode(parseInt(hex, 16))\n  );\n\n// Node's WHATWG URL parser returns `username` and `password` percent-encoded.\n// Decode before composing the `auth` option so credentials such as\n// `my%40email.com:pass` are sent as `my@email.com:pass`. Falls back to the\n// original value for malformed input so a bad encoding never throws.\nconst decodeURIComponentSafe = (value) => {",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 20,
+      "secondFile": {
+        "end": 25,
+        "endLoc": {
+          "column": 5,
+          "line": 25,
+          "position": 897
+        },
+        "name": "helpers/resolveConfig.js",
+        "start": 10,
+        "startLoc": {
+          "column": 36,
+          "line": 10,
+          "position": 470
+        }
+      },
+      "tokens": 37
+    },
+    {
+      "firstFile": {
+        "end": 64,
+        "endLoc": {
+          "column": 5,
+          "line": 64,
+          "position": 1982
+        },
+        "name": "adapters/fetch.js",
+        "start": 46,
+        "startLoc": {
+          "column": 2,
+          "line": 46,
+          "position": 1489
+        }
+      },
+      "format": "javascript",
+      "fragment": "  );\n\n// Node's WHATWG URL parser returns `username` and `password` percent-encoded.\n// Decode before composing the `auth` option so credentials such as\n// `my%40email.com:pass` are sent as `my@email.com:pass`. Falls back to the\n// original value for malformed input so a bad encoding never throws.\nconst decodeURIComponentSafe = (value) => {\n  if (!utils.isString(value)) {\n    return value;\n  }\n\n  try {\n    return decodeURIComponent(value);\n  } catch (error) {\n    return value;\n  }\n};\n\nconst test = (fn, ...args) => {",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 19,
+      "secondFile": {
+        "end": 284,
+        "endLoc": {
+          "column": 5,
+          "line": 284,
+          "position": 10148
+        },
+        "name": "adapters/http.js",
+        "start": 266,
+        "startLoc": {
+          "column": 1,
+          "line": 266,
+          "position": 9655
+        }
+      },
+      "tokens": 46
+    },
+    {
+      "firstFile": {
+        "end": 280,
+        "endLoc": {
+          "column": 14,
+          "line": 280,
+          "position": 8010
+        },
+        "name": "adapters/fetch.js",
+        "start": 274,
+        "startLoc": {
+          "column": 6,
+          "line": 274,
+          "position": 7763
+        }
+      },
+      "format": "javascript",
+      "fragment": "      let auth = undefined;\n      const configAuth = own('auth');\n\n      if (configAuth) {\n        const username = utils.getSafeProp(configAuth, 'username') || '';\n        const password = utils.getSafeProp(configAuth, 'password') || '';\n        auth = {",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 7,
+      "secondFile": {
+        "end": 1031,
+        "endLoc": {
+          "column": 14,
+          "line": 1031,
+          "position": 35341
+        },
+        "name": "adapters/http.js",
+        "start": 1026,
+        "startLoc": {
+          "column": 6,
+          "line": 1026,
+          "position": 35095
+        }
+      },
+      "tokens": 48
+    },
+    {
+      "firstFile": {
+        "end": 50,
+        "endLoc": {
+          "column": 16,
+          "line": 50,
+          "position": 1062
+        },
+        "name": "core/AxiosHeaders.js",
+        "start": 40,
+        "startLoc": {
+          "column": 22,
+          "line": 40,
+          "position": 918
+        }
+      },
+      "format": "javascript",
+      "fragment": "    const code = value.charCodeAt(start);\n\n    if (code !== 0x09 && code !== 0x20) {\n      break;\n    }\n\n    start += 1;\n  }\n\n  while (end > start) {\n    const code = value.charCodeAt(end - 1);",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 11,
+      "secondFile": {
+        "end": 20,
+        "endLoc": {
+          "column": 16,
+          "line": 20,
+          "position": 308
+        },
+        "name": "helpers/sanitizeHeaderValue.js",
+        "start": 10,
+        "startLoc": {
+          "column": 20,
+          "line": 10,
+          "position": 164
+        }
+      },
+      "tokens": 35
+    },
+    {
+      "firstFile": {
+        "end": 59,
+        "endLoc": {
+          "column": 31,
+          "line": 59,
+          "position": 1203
+        },
+        "name": "core/AxiosHeaders.js",
+        "start": 50,
+        "startLoc": {
+          "column": 22,
+          "line": 50,
+          "position": 1068
+        }
+      },
+      "format": "javascript",
+      "fragment": "    const code = value.charCodeAt(end - 1);\n\n    if (code !== 0x09 && code !== 0x20) {\n      break;\n    }\n\n    end -= 1;\n  }\n\n  return start === 0 && end === value.length ? value : value.slice(start, end);",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 10,
+      "secondFile": {
+        "end": 29,
+        "endLoc": {
+          "column": 31,
+          "line": 29,
+          "position": 447
+        },
+        "name": "helpers/sanitizeHeaderValue.js",
+        "start": 20,
+        "startLoc": {
+          "column": 20,
+          "line": 20,
+          "position": 312
+        }
+      },
+      "tokens": 34
+    },
+    {
+      "firstFile": {
+        "end": 69,
+        "endLoc": {
+          "column": 10,
+          "line": 69,
+          "position": 2414
+        },
+        "name": "helpers/estimateDataURLDecodedBytes.js",
+        "start": 63,
+        "startLoc": {
+          "column": 35,
+          "line": 63,
+          "position": 2173
+        }
+      },
+      "format": "javascript",
+      "fragment": "  for (let i = 0, len = body.length; i < len; i++) {\n    let code = body.charCodeAt(i);\n    if (code === 37 /* '%' */ && isPercentEncodedByte(body, i, len)) {\n      code = hexValue(body.charCodeAt(i + 1)) * 16 + hexValue(body.charCodeAt(i + 2));\n      i += 2;\n    }\n    length++;",
+      "isNew": false,
+      "kind": "exact",
+      "lines": 7,
+      "secondFile": {
+        "end": 92,
+        "endLoc": {
+          "column": 6,
+          "line": 92,
+          "position": 2981
+        },
+        "name": "helpers/estimateDataURLDecodedBytes.js",
+        "start": 84,
+        "startLoc": {
+          "column": 16,
+          "line": 84,
+          "position": 2742
+        }
+      },
+      "tokens": 68
+    }
+  ],
+  "statistics": {
+    "detectionDate": "2026-11-15T21:10:38.700Z",
+    "formats": {
+      "javascript": {
+        "clones": 7,
+        "duplicatedLines": 90,
+        "duplicatedTokens": 300,
+        "lines": 9571,
+        "newClones": 0,
+        "newDuplicatedLines": 0,
+        "percentage": 0.9403406122662208,
+        "percentageTokens": 0.7376988713207269,
+        "sources": 64,
+        "tokens": 40667
+      },
+      "markdown": {
+        "clones": 0,
+        "duplicatedLines": 0,
+        "duplicatedTokens": 0,
+        "lines": 50,
+        "newClones": 0,
+        "newDuplicatedLines": 0,
+        "percentage": 0.0,
+        "percentageTokens": 0.0,
+        "sources": 3,
+        "tokens": 271
+      }
+    },
+    "total": {
+      "clones": 7,
+      "duplicatedLines": 90,
+      "duplicatedTokens": 300,
+      "lines": 9621,
+      "newClones": 0,
+      "newDuplicatedLines": 0,
+      "percentage": 0.9354536950420954,
+      "percentageTokens": 0.7328154770628756,
+      "sources": 67,
+      "tokens": 40938
+    }
+  }
+}

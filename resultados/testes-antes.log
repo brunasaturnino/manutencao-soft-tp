@@ -1,40 +1,117 @@
+,
+            "auth": undefined,
+            "beforeRedirect": [Function dispatchBeforeRedirect],
+            "beforeRedirects": {
+              "proxy": [Function beforeRedirect],
+            },
+            "createConnection": undefined,
+            "family": undefined,
+            "headers": {
+              "Accept": "application/json, text/plain, */*",
+              "Accept-Encoding": "gzip, compress, deflate, br",
+              "User-Agent": "axios/1.21.0",
+            },
+            "hostname": "no-such-domain-987654.com",
+            "http2Options": undefined,
+            "insecureHTTPParser": false,
+            "lookup": [Function normalized],
+            "maxBodyLength": Infinity,
+            "maxRedirects": 21,
+            "method": "GET",
+            "nativeProtocols": {
+              "http:": {
+                "Agent": [Function Agent],
+                "ClientRequest": [Function ClientRequest],
+                "CloseEvent": [Function CloseEvent],
+                "IncomingMessage": [Function IncomingMessage],
+                "METHODS": [Array],
+                "MessageEvent": [Function MessageEvent],
+                "OutgoingMessage": [Function OutgoingMessage],
+                "STATUS_CODES": [Object],
+                "Server": [Function Server],
+                "ServerResponse": [Function ServerResponse],
+                "WebSocket": [Function WebSocket],
+                "_connectionListener": [Function connectionListener],
+                "createServer": [Function createServer],
+                "get": [Function get],
+                "globalAgent": [Agent],
+                "maxHeaderSize": 16384,
+                "request": [Function request],
+                "setMaxIdleHTTPParsers": [Function setMaxIdleHTTPParsers],
+                "validateHeaderName": [Function validateHeaderName],
+                "validateHeaderValue": [Function validateHeaderValue],
+              },
+              "https:": {
+                "Agent": [Function Agent],
+                "Server": [Function Server],
+                "createServer": [Function createServer],
+                "get": [Function get],
+                "globalAgent": [Agent],
+                "request": [Function request],
+              },
+            },
+            "path": "/",
+            "pathname": "/",
+            "port": "",
+            "protocol": "https:",
+            "sensitiveHeaders": [],
+          },
+          "_redirectCount": 0,
+          "_redirects": [],
+          "_requestBodyBuffers": [],
+          "_requestBodyLength": 0,
+          "_timeout": null,
+          "_writableState": WritableState {
+            "bufferedIndex": 0,
+            "corked": 0,
+            "highWaterMark": 65536,
+            "length": 0,
+            "onwrite": [Function bound onwrite],
+            "pendingcb": 0,
+            "writelen": 0,
+            Symbol(kState): 17580812,
+            Symbol(kBufferedValue): null,
+          },
+          Symbol(shapeMode): true,
+          Symbol(kCapture): false,
+        },
+      },
+      Symbol(kOutHeaders): {
+        "accept": [
+          "Accept",
+          "application/json, text/plain, */*",
+        ],
+        "accept-encoding": [
+          "Accept-Encoding",
+          "gzip, compress, deflate, br",
+        ],
+        "host": [
+          "Host",
+          "no-such-domain-987654.com",
+        ],
+        "user-agent": [
+          "User-Agent",
+          "axios/1.21.0",
+        ],
+      },
+      Symbol(errored): null,
+      Symbol(kHighWaterMark): 65536,
+      Symbol(kRejectNonStandardBodyWrites): false,
+      Symbol(kUniqueHeaders): null,
+    },
+    "status": 403,
+    "statusText": "Forbidden",
+  },
+  "status": 403,
+}
 
- RUN  v4.1.11 C:/Users/bruna/Documents/MANUTENÇÃO DE SOFT/TP/alvos/axios
-      Coverage enabled with v8
+ ❯ tests/unit/adapters/http.test.js:5607:7
+    5605|
+    5606|     it('should handle errors', async () => {
+    5607|       await assert.rejects(async () => {
+       |       ^
+    5608|         await axios.get('https://no-such-domain-987654.com', {
+    5609|           lookup: (hostname, opt, cb) => {
 
- ❯ |unit| tests/unit/adapters/fetch.test.js (83 tests | 1 failed) 27967ms
-     × should not use inherited Symbol.iterator for request headers 17ms
-
- Test Files  1 failed | 73 passed (74)
-      Tests  1 failed | 1671 passed | 28 skipped (1700)
-   Start at  14:24:44
-   Duration  94.17s (transform 4.58s, setup 0ms, import 30.96s, tests 131.64s, environment 15ms)
-
-
-(node:24872) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node --trace-warnings ...` to show where the warning was created)
-
-⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
-
- FAIL  |unit| tests/unit/adapters/fetch.test.js > supports fetch with nodejs > should not use inherited Symbol.iterator for request headers
-AssertionError: Expected values to be strictly equal:
-+ actual - expected
-
-+ 'Bearer CHANGED'
-- 'Bearer VALID_USER_TOKEN'
-          ^
-
-
-Expected: "Bearer VALID_USER_TOKEN"
-Received: "Bearer CHANGED"
-
- ❯ tests/unit/adapters/fetch.test.js:132:14
-    130|       });
-    131|
-    132|       assert.strictEqual(data.authorization, 'Bearer VALID_USER_TOKEN'…
-       |              ^
-    133|       assert.strictEqual(data.xApp, 'safe');
-    134|       assert.strictEqual(data.xInjected, null);
-
-⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
 

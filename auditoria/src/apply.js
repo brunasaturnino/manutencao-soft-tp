@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parseSource, traverse } from "./parse.js";
+import { structuralKey } from "./clones.js";
 
 function applyEdits(code, edits) {
   const sorted = [...edits].sort((a, b) => b.start - a.start || b.end - a.end);
@@ -238,7 +239,7 @@ function isWrite(identifierPath) {
 
 export function extractionEdits(code, ast, clones, fileRel, minStatements = 3) {
   const pairs = clones.filter(
-    (clone) => clone.type === 1 && clone.a.file === fileRel && clone.b.file === fileRel,
+    (clone) => clone.type === 1 && !clone.repetitive && clone.a.file === fileRel && clone.b.file === fileRel,
   );
   const candidates = [];
   for (const clone of pairs) {
@@ -454,4 +455,171 @@ export function parseFresh(abs) {
   const code = fs.readFileSync(abs, "utf8");
   const ast = parseSource(code, abs);
   return { abs, code, ast, rel: path.basename(abs) };
+}
+
+/**
+ * Consolidação entre ficheiros (clones de tipo 1 e 2 de funções de topo).
+ * Duas ou mais funções privadas de ficheiros diferentes, com a mesma estrutura
+ * (nomes locais renomeados), passam a viver num módulo partilhado e os ficheiros
+ * originais importam-na, com alias quando o nome difere. Só se aplica quando:
+ * a função não usa this/arguments/super nem se chama a si mesma; todos os nomes
+ * livres são globais ou imports que resolvem para o mesmo módulo em todos os
+ * ficheiros; e o módulo partilhado ainda não existe.
+ */
+function candidatesOf(file) {
+  const found = [];
+  traverse(file.ast, {
+    Program(programPath) {
+      for (const statementPath of programPath.get("body")) {
+        const node = statementPath.node;
+        let fn = null;
+        let name = null;
+        let declaration = node;
+        if (node.type === "FunctionDeclaration" && node.id) {
+          fn = node;
+          name = node.id.name;
+        } else if (
+          node.type === "VariableDeclaration" &&
+          node.kind === "const" &&
+          node.declarations.length === 1 &&
+          node.declarations[0].id.type === "Identifier" &&
+          ["ArrowFunctionExpression", "FunctionExpression"].includes(node.declarations[0].init?.type)
+        ) {
+          fn = node.declarations[0].init;
+          name = node.declarations[0].id.name;
+        }
+        if (!fn || fn.generator) continue;
+        if (!fn.params.every((p) => p.type === "Identifier")) continue;
+        const lines = (node.loc?.end.line ?? 0) - (node.loc?.start.line ?? 0) + 1;
+        const fnPath = fn === node ? statementPath : statementPath.get("declarations.0.init");
+        let bad = false;
+        const imports = [];
+        fnPath.traverse({
+          ThisExpression() { bad = true; },
+          Super() { bad = true; },
+          ReferencedIdentifier(p) {
+            const id = p.node.name;
+            if (id === "arguments" || id === name) { bad = true; return; }
+            const binding = p.scope.getBinding(id);
+            if (!binding) {
+              if (!(id in globalThis)) bad = true;
+              return;
+            }
+            if (binding.path === fnPath || binding.path.findParent((up) => up === fnPath)) return;
+            if (binding.kind !== "module") { bad = true; return; }
+            const spec = binding.path.node;
+            const decl = binding.path.parent;
+            const imported = spec.type === "ImportDefaultSpecifier" ? "default" : spec.type === "ImportNamespaceSpecifier" ? "*" : spec.imported.name ?? spec.imported.value;
+            if (!imports.some((item) => item.local === id)) imports.push({ local: id, imported, source: decl.source.value });
+          },
+        });
+        if (bad || lines < 6) continue;
+        const signature = imports
+          .map((item) => `${item.source.startsWith(".") ? path.resolve(path.dirname(file.abs), item.source) : item.source}#${item.imported}#${item.local}`)
+          .sort()
+          .join(";");
+        const first = (declaration.leadingComments ?? []).at(-1);
+        const adjacent = first && declaration.loc.start.line - first.loc.end.line <= 1;
+        const comments = [];
+        if (adjacent) {
+          let index = declaration.leadingComments.length - 1;
+          let line = declaration.loc.start.line;
+          while (index >= 0 && line - declaration.leadingComments[index].loc.end.line <= 1) {
+            comments.unshift(declaration.leadingComments[index]);
+            line = declaration.leadingComments[index].loc.start.line;
+            index -= 1;
+          }
+        }
+        found.push({
+          file,
+          name,
+          node,
+          key: `${fn.type}|${fn.async}|${fn.params.length}|${structuralKey(fn)}|${signature}`,
+          imports,
+          start: comments.length ? comments[0].start : node.start,
+          end: node.end,
+        });
+      }
+    },
+  });
+  return found;
+}
+
+export function applyConsolidationToFiles(files) {
+  const groups = new Map();
+  for (const file of files) {
+    if (!file.ast) continue;
+    for (const candidate of candidatesOf(file)) {
+      if (!groups.has(candidate.key)) groups.set(candidate.key, []);
+      groups.get(candidate.key).push(candidate);
+    }
+  }
+  const notes = [];
+  const edits = new Map();
+  const imported = new Map();
+  const created = [];
+  for (const members of groups.values()) {
+    const distinct = new Set(members.map((member) => member.file.rel));
+    if (members.length < 2 || distinct.size < 2 || distinct.size !== members.length) continue;
+    const canonical = members[0];
+    let ancestor = path.dirname(canonical.file.abs);
+    for (const member of members) {
+      while (path.relative(ancestor, member.file.abs).startsWith("..")) ancestor = path.dirname(ancestor);
+    }
+    let dir = ancestor;
+    for (let probe = ancestor, depth = 0; depth < 3; depth += 1, probe = path.dirname(probe)) {
+      if (fs.existsSync(path.join(probe, "helpers"))) {
+        dir = path.join(probe, "helpers");
+        break;
+      }
+      if (fs.existsSync(path.join(probe, "package.json"))) break;
+    }
+    const target = path.join(dir, `${canonical.name}.js`);
+    if (fs.existsSync(target) || created.includes(target)) continue;
+    const relFrom = (fromDir, abs) => {
+      const rel = path.relative(fromDir, abs).split(path.sep).join("/");
+      return rel.startsWith(".") ? rel : `./${rel}`;
+    };
+    const importLines = canonical.imports.map((item) => {
+      const source = item.source.startsWith(".")
+        ? relFrom(dir, path.resolve(path.dirname(canonical.file.abs), item.source))
+        : item.source;
+      if (item.imported === "default") return `import ${item.local} from '${source}';`;
+      if (item.imported === "*") return `import * as ${item.local} from '${source}';`;
+      return item.imported === item.local
+        ? `import { ${item.local} } from '${source}';`
+        : `import { ${item.imported} as ${item.local} } from '${source}';`;
+    });
+    const body = canonical.file.code.slice(canonical.start, canonical.end);
+    const exported = body.replace(
+      new RegExp(`^((?:\\s|//[^\\n]*\\n|/\\*[\\s\\S]*?\\*/)*)(?=(?:async\\s+)?function\\b|const\\b)`),
+      "$1export ",
+    );
+    fs.writeFileSync(target, `${[...importLines, "", exported.trimEnd()].join("\n")}\n`);
+    created.push(target);
+    for (const member of members) {
+      const text = member.file.code;
+      let end = member.end;
+      while (text[end] === "\n" || text[end] === "\r") end += 1;
+      end = Math.min(end, member.end + 2);
+      if (!edits.has(member.file.abs)) edits.set(member.file.abs, []);
+      edits.get(member.file.abs).push({ start: lineStart(text, member.start), end, text: "" });
+      const rel = relFrom(path.dirname(member.file.abs), target);
+      const specifier = member.name === canonical.name ? canonical.name : `${canonical.name} as ${member.name}`;
+      if (!imported.has(member.file.abs)) imported.set(member.file.abs, []);
+      imported.get(member.file.abs).push(`import { ${specifier} } from '${rel}';`);
+      notes.push({ kind: "extract-shared-module", name: member.name, file: member.file.rel, module: path.relative(path.dirname(member.file.abs), target) && relFrom(path.dirname(member.file.abs), target), line: member.node.loc?.start.line ?? 1, createdAbs: target });
+    }
+  }
+  for (const file of files) {
+    if (!edits.has(file.abs)) continue;
+    let insertAt = 0;
+    for (const statement of file.ast.program.body) {
+      if (statement.type === "ImportDeclaration") insertAt = statement.end;
+      else if (statement.directive) insertAt = statement.end;
+    }
+    const list = [...edits.get(file.abs), { start: insertAt, end: insertAt, text: `\n${imported.get(file.abs).join("\n")}` }];
+    writeIfChanged(file.abs, file.code, applyEdits(file.code, list));
+  }
+  return notes;
 }

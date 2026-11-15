@@ -1,0 +1,1281 @@
+{
+  "seed": 1,
+  "injetados": 40,
+  "ferramenta": [
+    {
+      "id": 0,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 10,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 11,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 12,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 13,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 14,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 15,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 16,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 17,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 18,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 19,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 20,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 21,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 22,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 23,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 24,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 25,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 26,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 27,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 28,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 29,
+      "found": false,
+      "filtered": true,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 30,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 31,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 32,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 33,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 34,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 35,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 36,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 37,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 38,
+      "found": false,
+      "filtered": false,
+      "types": []
+    },
+    {
+      "id": 39,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    }
+  ],
+  "ferramentaSemFiltro": [
+    {
+      "id": 0,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 9,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 10,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 11,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 12,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 13,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 14,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 15,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 16,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 17,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 18,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 19,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 20,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 21,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 22,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 23,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 24,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2
+      ]
+    },
+    {
+      "id": 25,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 26,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 27,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 28,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 29,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 30,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 31,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 32,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 33,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 34,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 35,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 36,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1
+      ]
+    },
+    {
+      "id": 37,
+      "found": true,
+      "filtered": false,
+      "types": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 38,
+      "found": false,
+      "filtered": false,
+      "types": []
+    },
+    {
+      "id": 39,
+      "found": true,
+      "filtered": false,
+      "types": [
+        2,
+        1
+      ]
+    }
+  ],
+  "jscpd": [
+    {
+      "id": 0,
+      "found": true
+    },
+    {
+      "id": 1,
+      "found": true
+    },
+    {
+      "id": 2,
+      "found": true
+    },
+    {
+      "id": 3,
+      "found": true
+    },
+    {
+      "id": 4,
+      "found": true
+    },
+    {
+      "id": 5,
+      "found": true
+    },
+    {
+      "id": 6,
+      "found": true
+    },
+    {
+      "id": 7,
+      "found": true
+    },
+    {
+      "id": 8,
+      "found": true
+    },
+    {
+      "id": 9,
+      "found": true
+    },
+    {
+      "id": 10,
+      "found": false
+    },
+    {
+      "id": 11,
+      "found": false
+    },
+    {
+      "id": 12,
+      "found": false
+    },
+    {
+      "id": 13,
+      "found": false
+    },
+    {
+      "id": 14,
+      "found": false
+    },
+    {
+      "id": 15,
+      "found": false
+    },
+    {
+      "id": 16,
+      "found": false
+    },
+    {
+      "id": 17,
+      "found": false
+    },
+    {
+      "id": 18,
+      "found": false
+    },
+    {
+      "id": 19,
+      "found": false
+    },
+    {
+      "id": 20,
+      "found": false
+    },
+    {
+      "id": 21,
+      "found": false
+    },
+    {
+      "id": 22,
+      "found": false
+    },
+    {
+      "id": 23,
+      "found": false
+    },
+    {
+      "id": 24,
+      "found": false
+    },
+    {
+      "id": 25,
+      "found": true
+    },
+    {
+      "id": 26,
+      "found": true
+    },
+    {
+      "id": 27,
+      "found": true
+    },
+    {
+      "id": 28,
+      "found": true
+    },
+    {
+      "id": 29,
+      "found": true
+    },
+    {
+      "id": 30,
+      "found": true
+    },
+    {
+      "id": 31,
+      "found": true
+    },
+    {
+      "id": 32,
+      "found": true
+    },
+    {
+      "id": 33,
+      "found": true
+    },
+    {
+      "id": 34,
+      "found": true
+    },
+    {
+      "id": 35,
+      "found": true
+    },
+    {
+      "id": 36,
+      "found": true
+    },
+    {
+      "id": 37,
+      "found": true
+    },
+    {
+      "id": 38,
+      "found": false
+    },
+    {
+      "id": 39,
+      "found": true
+    }
+  ],
+  "resumo": [
+    {
+      "grupo": "tipo 1 (cópia exata)",
+      "injetados": 10,
+      "ferramenta": 10,
+      "ferramentaSemFiltro": 10,
+      "jscpd": 10
+    },
+    {
+      "grupo": "tipo 2 (nomes e literais trocados)",
+      "injetados": 15,
+      "ferramenta": 15,
+      "ferramentaSemFiltro": 15,
+      "jscpd": 0
+    },
+    {
+      "grupo": "tipo 3 com 10 % de instruções alteradas",
+      "injetados": 5,
+      "ferramenta": 4,
+      "ferramentaSemFiltro": 5,
+      "jscpd": 5
+    },
+    {
+      "grupo": "tipo 3 com 20 % de instruções alteradas",
+      "injetados": 5,
+      "ferramenta": 5,
+      "ferramentaSemFiltro": 5,
+      "jscpd": 5
+    },
+    {
+      "grupo": "tipo 3 com 30 % de instruções alteradas",
+      "injetados": 5,
+      "ferramenta": 4,
+      "ferramentaSemFiltro": 4,
+      "jscpd": 4
+    }
+  ],
+  "verdade": [
+    {
+      "id": 0,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/helpers/sanitizeHeaderValue.js",
+      "originStart": 5,
+      "originEnd": 30,
+      "file": "lib/_bench/inj_00.js",
+      "injectedLines": 26
+    },
+    {
+      "id": 1,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 740,
+      "originEnd": 764,
+      "file": "lib/_bench/inj_01.js",
+      "injectedLines": 25
+    },
+    {
+      "id": 2,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/helpers/formDataToStream.js",
+      "originStart": 68,
+      "originEnd": 117,
+      "file": "lib/_bench/inj_02.js",
+      "injectedLines": 50
+    },
+    {
+      "id": 3,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/core/AxiosHeaders.js",
+      "originStart": 166,
+      "originEnd": 184,
+      "file": "lib/_bench/inj_03.js",
+      "injectedLines": 19
+    },
+    {
+      "id": 4,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 715,
+      "originEnd": 729,
+      "file": "lib/_bench/inj_04.js",
+      "injectedLines": 15
+    },
+    {
+      "id": 5,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 157,
+      "originEnd": 186,
+      "file": "lib/_bench/inj_05.js",
+      "injectedLines": 30
+    },
+    {
+      "id": 6,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 83,
+      "originEnd": 105,
+      "file": "lib/_bench/inj_06.js",
+      "injectedLines": 23
+    },
+    {
+      "id": 7,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 543,
+      "originEnd": 559,
+      "file": "lib/_bench/inj_07.js",
+      "injectedLines": 17
+    },
+    {
+      "id": 8,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/core/AxiosError.js",
+      "originStart": 8,
+      "originEnd": 24,
+      "file": "lib/_bench/inj_08.js",
+      "injectedLines": 17
+    },
+    {
+      "id": 9,
+      "type": 1,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 44,
+      "originEnd": 61,
+      "file": "lib/_bench/inj_09.js",
+      "injectedLines": 18
+    },
+    {
+      "id": 10,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/speedometer.js",
+      "originStart": 9,
+      "originEnd": 53,
+      "file": "lib/_bench/inj_10.js",
+      "injectedLines": 45
+    },
+    {
+      "id": 11,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/formDataToJSON.js",
+      "originStart": 25,
+      "originEnd": 46,
+      "file": "lib/_bench/inj_11.js",
+      "injectedLines": 22
+    },
+    {
+      "id": 12,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 497,
+      "originEnd": 533,
+      "file": "lib/_bench/inj_12.js",
+      "injectedLines": 37
+    },
+    {
+      "id": 13,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 277,
+      "originEnd": 305,
+      "file": "lib/_bench/inj_13.js",
+      "injectedLines": 29
+    },
+    {
+      "id": 14,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/core/AxiosHeaders.js",
+      "originStart": 21,
+      "originEnd": 31,
+      "file": "lib/_bench/inj_14.js",
+      "injectedLines": 11
+    },
+    {
+      "id": 15,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/adapters/http.js",
+      "originStart": 111,
+      "originEnd": 129,
+      "file": "lib/_bench/inj_15.js",
+      "injectedLines": 19
+    },
+    {
+      "id": 16,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 963,
+      "originEnd": 975,
+      "file": "lib/_bench/inj_16.js",
+      "injectedLines": 13
+    },
+    {
+      "id": 17,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 248,
+      "originEnd": 262,
+      "file": "lib/_bench/inj_17.js",
+      "injectedLines": 15
+    },
+    {
+      "id": 18,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/core/AxiosHeaders.js",
+      "originStart": 62,
+      "originEnd": 90,
+      "file": "lib/_bench/inj_18.js",
+      "injectedLines": 29
+    },
+    {
+      "id": 19,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/core/InterceptorManager.js",
+      "originStart": 34,
+      "originEnd": 54,
+      "file": "lib/_bench/inj_19.js",
+      "injectedLines": 21
+    },
+    {
+      "id": 20,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/adapters/http.js",
+      "originStart": 226,
+      "originEnd": 262,
+      "file": "lib/_bench/inj_20.js",
+      "injectedLines": 37
+    },
+    {
+      "id": 21,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 394,
+      "originEnd": 429,
+      "file": "lib/_bench/inj_21.js",
+      "injectedLines": 36
+    },
+    {
+      "id": 22,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/utils.js",
+      "originStart": 792,
+      "originEnd": 832,
+      "file": "lib/_bench/inj_22.js",
+      "injectedLines": 41
+    },
+    {
+      "id": 23,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/platform/node/index.js",
+      "originStart": 15,
+      "originEnd": 25,
+      "file": "lib/_bench/inj_23.js",
+      "injectedLines": 11
+    },
+    {
+      "id": 24,
+      "type": 2,
+      "level": 0,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 134,
+      "originEnd": 155,
+      "file": "lib/_bench/inj_24.js",
+      "injectedLines": 22
+    },
+    {
+      "id": 25,
+      "type": 3,
+      "level": 0.1,
+      "origin": "lib/core/AxiosError.js",
+      "originStart": 29,
+      "originEnd": 73,
+      "file": "lib/_bench/inj_25.js",
+      "injectedLines": 45
+    },
+    {
+      "id": 26,
+      "type": 3,
+      "level": 0.1,
+      "origin": "lib/helpers/formDataToJSON.js",
+      "originStart": 55,
+      "originEnd": 66,
+      "file": "lib/_bench/inj_26.js",
+      "injectedLines": 12
+    },
+    {
+      "id": 27,
+      "type": 3,
+      "level": 0.1,
+      "origin": "lib/core/mergeConfig.js",
+      "originStart": 23,
+      "originEnd": 66,
+      "file": "lib/_bench/inj_27.js",
+      "injectedLines": 44
+    },
+    {
+      "id": 28,
+      "type": 3,
+      "level": 0.1,
+      "origin": "lib/core/AxiosHeaders.js",
+      "originStart": 35,
+      "originEnd": 60,
+      "file": "lib/_bench/inj_28.js",
+      "injectedLines": 26
+    },
+    {
+      "id": 29,
+      "type": 3,
+      "level": 0.1,
+      "origin": "lib/adapters/http.js",
+      "originStart": 300,
+      "originEnd": 320,
+      "file": "lib/_bench/inj_29.js",
+      "injectedLines": 19
+    },
+    {
+      "id": 30,
+      "type": 3,
+      "level": 0.2,
+      "origin": "lib/helpers/throttle.js",
+      "originStart": 7,
+      "originEnd": 43,
+      "file": "lib/_bench/inj_30.js",
+      "injectedLines": 38
+    },
+    {
+      "id": 31,
+      "type": 3,
+      "level": 0.2,
+      "origin": "lib/helpers/validator.js",
+      "originStart": 81,
+      "originEnd": 107,
+      "file": "lib/_bench/inj_31.js",
+      "injectedLines": 27
+    },
+    {
+      "id": 32,
+      "type": 3,
+      "level": 0.2,
+      "origin": "lib/helpers/shouldBypassProxy.js",
+      "originStart": 315,
+      "originEnd": 347,
+      "file": "lib/_bench/inj_32.js",
+      "injectedLines": 31
+    },
+    {
+      "id": 33,
+      "type": 3,
+      "level": 0.2,
+      "origin": "lib/utils.js",
+      "originStart": 879,
+      "originEnd": 888,
+      "file": "lib/_bench/inj_33.js",
+      "injectedLines": 10
+    },
+    {
+      "id": 34,
+      "type": 3,
+      "level": 0.2,
+      "origin": "lib/adapters/http.js",
+      "originStart": 588,
+      "originEnd": 621,
+      "file": "lib/_bench/inj_34.js",
+      "injectedLines": 32
+    },
+    {
+      "id": 35,
+      "type": 3,
+      "level": 0.3,
+      "origin": "lib/helpers/estimateDataURLDecodedBytes.js",
+      "originStart": 38,
+      "originEnd": 51,
+      "file": "lib/_bench/inj_35.js",
+      "injectedLines": 14
+    },
+    {
+      "id": 36,
+      "type": 3,
+      "level": 0.3,
+      "origin": "lib/utils.js",
+      "originStart": 440,
+      "originEnd": 453,
+      "file": "lib/_bench/inj_36.js",
+      "injectedLines": 15
+    },
+    {
+      "id": 37,
+      "type": 3,
+      "level": 0.3,
+      "origin": "lib/core/AxiosHeaders.js",
+      "originStart": 92,
+      "originEnd": 149,
+      "file": "lib/_bench/inj_37.js",
+      "injectedLines": 59
+    },
+    {
+      "id": 38,
+      "type": 3,
+      "level": 0.3,
+      "origin": "lib/core/mergeConfig.js",
+      "originStart": 103,
+      "originEnd": 127,
+      "file": "lib/_bench/inj_38.js",
+      "injectedLines": 18
+    },
+    {
+      "id": 39,
+      "type": 3,
+      "level": 0.3,
+      "origin": "lib/axios.js",
+      "originStart": 28,
+      "originEnd": 44,
+      "file": "lib/_bench/inj_39.js",
+      "injectedLines": 18
+    }
+  ]
+}

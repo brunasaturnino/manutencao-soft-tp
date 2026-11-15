@@ -3,14 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { auditRepo, renderReport, serializable } from "./audit.js";
-import { applyDeadToFiles, applyDelegationToFiles, applyExtractionToFiles } from "./apply.js";
-import { evaluateRepo } from "./evaluate.js";
+import { applyConsolidationToFiles, applyDeadToFiles, applyDelegationToFiles, applyExtractionToFiles } from "./apply.js";
+import { evaluateRepo, renderEvaluation } from "./evaluate.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const workspace = path.resolve(here, "..", "..");
 
 function args(argv) {
-  const out = { repo: path.join(workspace, "alvos", "axios"), out: path.join(workspace, "resultados"), minTokens: 30, minLines: 6 };
+  const out = { repo: path.join(workspace, "alvos", "axios"), out: path.join(workspace, "resultados"), minTokens: 30, minLines: 6, minEntropy: undefined, internalExports: [] };
   for (let i = 0; i < argv.length; i += 1) {
     const key = argv[i];
     const value = argv[i + 1];
@@ -18,6 +18,8 @@ function args(argv) {
     if (key === "--out") out.out = path.resolve(value);
     if (key === "--min-tokens") out.minTokens = Number(value);
     if (key === "--min-lines") out.minLines = Number(value);
+    if (key === "--min-entropy") out.minEntropy = Number(value);
+    if (key === "--internal-export") out.internalExports.push(value);
     if (key.startsWith("--")) i += 1;
   }
   return out;
@@ -45,6 +47,7 @@ if (command === "scan") {
   let report = auditRepo(options.repo, options);
   const notes = [
     ...applyDelegationToFiles(report.product),
+    ...applyConsolidationToFiles((report = auditRepo(options.repo, options)).product),
     ...applyExtractionToFiles((report = auditRepo(options.repo, options)).product, report.clones.map((clone) => clone.ranges)),
     ...applyDeadToFiles((report = auditRepo(options.repo, options)).product, report.dead),
   ];
@@ -53,6 +56,10 @@ if (command === "scan") {
   fs.writeFileSync(path.join(options.out, "alteracoes.json"), JSON.stringify(notes, null, 2));
   console.log(renderReport(report));
   console.log(`\nAlterações: ${notes.length}`);
+} else if (command === "relatorio") {
+  // Regenera o RELATORIO.md a partir do avaliacao.json já gravado, sem rodar nada.
+  const result = JSON.parse(fs.readFileSync(path.join(options.out, "avaliacao.json"), "utf8"));
+  fs.writeFileSync(path.join(options.out, "RELATORIO.md"), renderEvaluation(result));
 } else if (command === "evaluate") {
   await evaluateRepo(options);
 } else {

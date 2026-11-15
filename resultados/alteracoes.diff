@@ -1,8 +1,39 @@
 diff --git a/lib/adapters/fetch.js b/lib/adapters/fetch.js
-index a197a1d7..2c595589 100644
+index a197a1d..1826aff 100644
 --- a/lib/adapters/fetch.js
 +++ b/lib/adapters/fetch.js
-@@ -744,6 +744,5 @@ export const getFetch = (config) => {
+@@ -15,6 +15,7 @@ import settle from '../core/settle.js';
+ import estimateDataURLDecodedBytes from '../helpers/estimateDataURLDecodedBytes.js';
+ import { VERSION } from '../env/data.js';
+ import { toByteStringHeaderObject } from '../helpers/sanitizeHeaderValue.js';
++import { decodeURIComponentSafe } from '../helpers/decodeURIComponentSafe.js';
+ 
+ const DEFAULT_CHUNK_SIZE = 64 * 1024;
+ 
+@@ -45,22 +46,6 @@ const encodeUTF8 = (str) =>
+     String.fromCharCode(parseInt(hex, 16))
+   );
+ 
+-// Node's WHATWG URL parser returns `username` and `password` percent-encoded.
+-// Decode before composing the `auth` option so credentials such as
+-// `my%40email.com:pass` are sent as `my@email.com:pass`. Falls back to the
+-// original value for malformed input so a bad encoding never throws.
+-const decodeURIComponentSafe = (value) => {
+-  if (!utils.isString(value)) {
+-    return value;
+-  }
+-
+-  try {
+-    return decodeURIComponent(value);
+-  } catch (error) {
+-    return value;
+-  }
+-};
+-
+ const test = (fn, ...args) => {
+   try {
+     return !!fn(...args);
+@@ -744,6 +729,5 @@ export const getFetch = (config) => {
    return target;
  };
  
@@ -10,8 +41,89 @@ index a197a1d7..2c595589 100644
 +getFetch();
  
 -export default adapter;
+diff --git a/lib/adapters/http.js b/lib/adapters/http.js
+index 6a6a5fb..3110b68 100755
+--- a/lib/adapters/http.js
++++ b/lib/adapters/http.js
+@@ -36,6 +36,7 @@ import {
+   asyncDecorator,
+ } from '../helpers/progressEventReducer.js';
+ import { estimateDataURLBufferAllocation } from '../helpers/estimateDataURLDecodedBytes.js';
++import { decodeURIComponentSafe } from '../helpers/decodeURIComponentSafe.js';
+ 
+ const zlibOptions = {
+   flush: zlib.constants.Z_SYNC_FLUSH,
+@@ -265,22 +266,6 @@ const supportedProtocols = platform.protocols.map((protocol) => {
+   return protocol + ':';
+ });
+ 
+-// Node's WHATWG URL parser returns `username` and `password` percent-encoded.
+-// Decode before composing the `auth` option so credentials such as
+-// `my%40email.com:pass` are sent as `my@email.com:pass`. Falls back to the
+-// original value for malformed input so a bad encoding never throws.
+-const decodeURIComponentSafe = (value) => {
+-  if (!utils.isString(value)) {
+-    return value;
+-  }
+-
+-  try {
+-    return decodeURIComponent(value);
+-  } catch (error) {
+-    return value;
+-  }
+-};
+-
+ const flushOnFinish = (stream, [throttled, flush]) => {
+   stream.on('end', flush).on('error', flush);
+ 
+diff --git a/lib/core/AxiosHeaders.js b/lib/core/AxiosHeaders.js
+index 529ca66..11e01d8 100644
+--- a/lib/core/AxiosHeaders.js
++++ b/lib/core/AxiosHeaders.js
+@@ -3,6 +3,7 @@
+ import utils from '../utils.js';
+ import parseHeaders from '../helpers/parseHeaders.js';
+ import { sanitizeHeaderValue } from '../helpers/sanitizeHeaderValue.js';
++import { trimOWS } from '../helpers/trimOWS.js';
+ 
+ const $internals = Symbol('internals');
+ 
+@@ -32,33 +33,6 @@ function parseTokens(str) {
+ 
+ const parameterNameRE = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+ 
+-function trimOWS(value) {
+-  let start = 0;
+-  let end = value.length;
+-
+-  while (start < end) {
+-    const code = value.charCodeAt(start);
+-
+-    if (code !== 0x09 && code !== 0x20) {
+-      break;
+-    }
+-
+-    start += 1;
+-  }
+-
+-  while (end > start) {
+-    const code = value.charCodeAt(end - 1);
+-
+-    if (code !== 0x09 && code !== 0x20) {
+-      break;
+-    }
+-
+-    end -= 1;
+-  }
+-
+-  return start === 0 && end === value.length ? value : value.slice(start, end);
+-}
+-
+ function decodeQuotedString(value) {
+   const last = value.length - 1;
+ 
 diff --git a/lib/helpers/deprecatedMethod.js b/lib/helpers/deprecatedMethod.js
-index ec112de2..7b5e14ed 100644
+index ec112de..7b5e14e 100644
 --- a/lib/helpers/deprecatedMethod.js
 +++ b/lib/helpers/deprecatedMethod.js
 @@ -12,20 +12,3 @@
@@ -35,3 +147,42 @@ index ec112de2..7b5e14ed 100644
 -    /* Ignore */
 -  }
 -}
+diff --git a/lib/helpers/sanitizeHeaderValue.js b/lib/helpers/sanitizeHeaderValue.js
+index 0462fc0..4390eb0 100644
+--- a/lib/helpers/sanitizeHeaderValue.js
++++ b/lib/helpers/sanitizeHeaderValue.js
+@@ -1,33 +1,7 @@
+ 'use strict';
+ 
+ import utils from '../utils.js';
+-
+-function trimSPorHTAB(str) {
+-  let start = 0;
+-  let end = str.length;
+-
+-  while (start < end) {
+-    const code = str.charCodeAt(start);
+-
+-    if (code !== 0x09 && code !== 0x20) {
+-      break;
+-    }
+-
+-    start += 1;
+-  }
+-
+-  while (end > start) {
+-    const code = str.charCodeAt(end - 1);
+-
+-    if (code !== 0x09 && code !== 0x20) {
+-      break;
+-    }
+-
+-    end -= 1;
+-  }
+-
+-  return start === 0 && end === str.length ? str : str.slice(start, end);
+-}
++import { trimOWS as trimSPorHTAB } from './trimOWS.js';
+ 
+ // The control-code ranges are intentional: header sanitization strips C0/DEL bytes.
+ // eslint-disable-next-line no-control-regex

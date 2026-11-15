@@ -5,7 +5,9 @@ import path from "node:path";
 import { test } from "node:test";
 import { pathToFileURL, fileURLToPath } from "node:url";
 import { auditRepo } from "../src/audit.js";
-import { applyDeadToFiles, applyDelegationToFiles, applyExtractionToFiles } from "../src/apply.js";
+import { normalizedEntropy } from "../src/clones.js";
+import { readPublicSurface } from "../src/files.js";
+import { applyConsolidationToFiles, applyDeadToFiles, applyDelegationToFiles, applyExtractionToFiles } from "../src/apply.js";
 
 const fixture = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "fixtures", "mini");
 const options = { minTokens: 20, minLines: 4 };
@@ -69,4 +71,66 @@ test("a refatoração segura preserva o resultado e remove o código morto", asy
   assert.match(side, /let bytes = 0/);
   assert.match(side, /let written = 0/);
   assert.match(side, /written = 1/);
+});
+
+test("a consolidação move função duplicada entre ficheiros para módulo partilhado", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "audit-shared-"));
+  fs.mkdirSync(path.join(tmp, "lib", "helpers"), { recursive: true });
+  fs.mkdirSync(path.join(tmp, "lib", "core"), { recursive: true });
+  const body = (param) => `function trim(${param}) {
+  let start = 0;
+  let end = ${param}.length;
+  while (start < end && ${param}.charCodeAt(start) === 32) {
+    start += 1;
+  }
+  while (end > start && ${param}.charCodeAt(end - 1) === 32) {
+    end -= 1;
+  }
+  return ${param}.slice(start, end);
+}
+`;
+  fs.writeFileSync(path.join(tmp, "lib", "core", "a.js"), `${body("value")}export const a = (x) => trim(x);\n`);
+  fs.writeFileSync(path.join(tmp, "lib", "helpers", "b.js"), `${body("str")}export const b = (x) => trim(x);\n`);
+  fs.writeFileSync(path.join(tmp, "index.js"), "export { a } from './lib/core/a.js';\nexport { b } from './lib/helpers/b.js';\n");
+  fs.writeFileSync(path.join(tmp, "package.json"), JSON.stringify({ name: "x", type: "module", main: "index.js" }));
+  const report = auditRepo(tmp, options);
+  const notes = applyConsolidationToFiles(report.product);
+  assert.equal(notes.length, 2, JSON.stringify(notes));
+  const shared = path.join(tmp, "lib", "helpers", "trim.js");
+  assert.ok(fs.existsSync(shared));
+  assert.ok(notes.every((note) => note.createdAbs === shared));
+  assert.match(fs.readFileSync(shared, "utf8"), /export function trim\(value\)/);
+  assert.match(fs.readFileSync(path.join(tmp, "lib", "core", "a.js"), "utf8"), /import \{ trim \} from '\.\.\/helpers\/trim\.js'/);
+  assert.doesNotMatch(fs.readFileSync(path.join(tmp, "lib", "helpers", "b.js"), "utf8"), /function trim/);
+});
+
+test("o filtro de variedade separa listas de lógica", () => {
+  const list = Array.from({ length: 40 }, (_, i) => ({ norm: i % 2 === 0 ? "ID" : "," }));
+  const logic = Array.from({ length: 40 }, (_, i) => ({ norm: ["if", "(", "ID", ")", "{", "return", "LIT", ";", "}", "=", "+", "ID"][i % 12] }));
+  assert.ok(normalizedEntropy(list) < 2.9, String(normalizedEntropy(list)));
+  assert.ok(normalizedEntropy(logic) > 2.9, String(normalizedEntropy(logic)));
+  assert.equal(normalizedEntropy([]), 0);
+});
+
+test("uma tabela de entradas repetidas é marcada como estrutura repetitiva e não como clone", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "audit-table-"));
+  fs.mkdirSync(path.join(tmp, "lib"), { recursive: true });
+  const rows = Array.from({ length: 14 }, (_, i) => `  key${i}: handler${i % 3},`).join("\n");
+  fs.writeFileSync(path.join(tmp, "lib", "a.js"), `const table = {\n${rows}\n};\nexport default table;\n`);
+  fs.writeFileSync(path.join(tmp, "lib", "b.js"), `const other = {\n${rows}\n};\nexport default other;\n`);
+  fs.writeFileSync(path.join(tmp, "package.json"), JSON.stringify({ name: "x", type: "module", main: "lib/a.js" }));
+  const report = auditRepo(tmp, options);
+  assert.ok(report.clones.length > 0);
+  assert.ok(report.clones.every((clone) => clone.repetitive), JSON.stringify(report.clones.map((c) => [c.type, c.entropy])));
+  assert.equal(report.metrics.clonePairs, 0);
+});
+
+test("padrões com curinga em exports tornam público o que o Node expõe, e podem ser declarados internos", () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "audit-exports-"));
+  fs.mkdirSync(path.join(tmp, "lib", "deep"), { recursive: true });
+  fs.writeFileSync(path.join(tmp, "lib", "deep", "x.js"), "export const x = 1;\n");
+  fs.writeFileSync(path.join(tmp, "package.json"), JSON.stringify({ name: "x", exports: { ".": "./index.js", "./unsafe/*": "./lib/*" } }));
+  const file = path.join(tmp, "lib", "deep", "x.js");
+  assert.equal(readPublicSurface(tmp).isPublic(file), true);
+  assert.equal(readPublicSurface(tmp, { internalExports: ["./unsafe/*"] }).isPublic(file), false);
 });

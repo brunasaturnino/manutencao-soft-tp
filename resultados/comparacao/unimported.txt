@@ -1,0 +1,26 @@
+- initializing
+
+       summary               unimported v1.31.1 (node)
+────────────────────────────────────────────────────────────────────────────────
+       entry file          : index.js
+
+       unresolved imports  : 0
+       unused dependencies : 0
+       unimported files    : 8
+
+
+─────┬──────────────────────────────────────────────────────────────────────────
+     │ 8 unimported files
+─────┼──────────────────────────────────────────────────────────────────────────
+   1 │ index.d.ts
+   2 │ lib/env/classes/FormData.js
+   3 │ lib/helpers/deprecatedMethod.js
+   4 │ lib/helpers/null.js
+   5 │ lib/platform/browser/classes/Blob.js
+   6 │ lib/platform/browser/classes/FormData.js
+   7 │ lib/platform/browser/classes/URLSearchParams.js
+   8 │ lib/platform/browser/index.js
+─────┴──────────────────────────────────────────────────────────────────────────
+
+
+       Inspect the results and run npx unimported -u to update ignore lists

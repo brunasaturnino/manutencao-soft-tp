@@ -173,7 +173,7 @@ function isNamePosition(node, parent) {
   return true;
 }
 
-function structuralKey(fn) {
+export function structuralKey(fn) {
   const locals = localsOf(fn);
   const rename = new Map();
   const seen = new Set();
@@ -213,6 +213,83 @@ function functionTokens(file, fn) {
   return file.tokens.filter((token) => token.start >= fn.body.start && token.end <= fn.body.end);
 }
 
+
+function touches(left, right, gap = 0) {
+  return left.file === right.file && left.start <= right.end + gap && right.start <= left.end + gap;
+}
+
+function unionRange(left, right) {
+  return {
+    ...left,
+    start: Math.min(left.start, right.start),
+    end: Math.max(left.end, right.end),
+    startLine: Math.min(left.startLine, right.startLine),
+    endLine: Math.max(left.endLine, right.endLine),
+  };
+}
+
+/**
+ * A janela deslizante reporta o mesmo clone várias vezes, com deslocamentos
+ * diferentes. Pares do mesmo tipo e do mesmo par de ficheiros cujos intervalos
+ * se tocam nos dois lados fundem-se numa única classe (união por componentes
+ * conexos). Uma classe cujos dois lados ficam no mesmo ficheiro e se tocam entre
+ * si (ou distam uma linha) é uma repetição em sequência (tandem): tabelas de
+ * configuração, atribuições de constantes, séries de `if` homogéneos. Não é
+ * duplicação a extrair, por isso fica marcada como `repetitive`.
+ */
+function mergeClasses(pairs) {
+  const parent = pairs.map((_, index) => index);
+  const find = (i) => (parent[i] === i ? i : (parent[i] = find(parent[i])));
+  for (let i = 0; i < pairs.length; i += 1) {
+    for (let j = i + 1; j < pairs.length; j += 1) {
+      const x = pairs[i];
+      const y = pairs[j];
+      if (x.type !== y.type || x.a.file !== y.a.file || x.b.file !== y.b.file) continue;
+      if (touches(x.a, y.a) && touches(x.b, y.b)) parent[find(j)] = find(i);
+    }
+  }
+  const classes = new Map();
+  pairs.forEach((pair, index) => {
+    const root = find(index);
+    const current = classes.get(root);
+    classes.set(
+      root,
+      current
+        ? {
+            ...current,
+            tokens: Math.max(current.tokens, pair.tokens),
+            lines: Math.max(current.lines, pair.lines),
+            a: unionRange(current.a, pair.a),
+            b: unionRange(current.b, pair.b),
+            windows: current.windows + 1,
+          }
+        : { ...pair, windows: 1 },
+    );
+  });
+  return [...classes.values()].map((clone) => {
+    const sameFile = clone.a.file === clone.b.file;
+    const tandem = sameFile && (touches(clone.a, clone.b) || clone.b.startLine - clone.a.endLine <= 1);
+    return { ...clone, repetitive: tandem };
+  });
+}
+
+/**
+ * Entropia de Shannon (bits) dos tokens normalizados do trecho. Listas de nomes,
+ * tabelas de constantes e séries de declarações homogéneas repetem poucos tokens
+ * normalizados, por isso têm entropia baixa; lógica de verdade tem entropia mais alta.
+ */
+export function normalizedEntropy(tokens) {
+  if (tokens.length === 0) return 0;
+  const counts = new Map();
+  for (const token of tokens) counts.set(token.norm, (counts.get(token.norm) ?? 0) + 1);
+  let entropy = 0;
+  for (const count of counts.values()) {
+    const p = count / tokens.length;
+    entropy -= p * Math.log2(p);
+  }
+  return entropy;
+}
+
 function jaccard(left, right) {
   if (!left.size && !right.size) return 1;
   let inter = 0;
@@ -228,8 +305,11 @@ function jaccard(left, right) {
  * A confirmação estrutural compara a chave da subárvore da função, com locais renomeados.
  * Tipo 3: similaridade de Jaccard entre conjuntos de janelas de duas funções.
  */
+export const DEFAULT_MIN_ENTROPY = 2.9;
+
 export function findClones(files, options) {
   const minTokens = options.minTokens ?? 30;
+  const minEntropy = options.minEntropy ?? DEFAULT_MIN_ENTROPY;
   const minLines = options.minLines ?? 6;
   const width = Math.min(12, minTokens);
   const groups = new Map();
@@ -311,6 +391,23 @@ export function findClones(files, options) {
     });
     if (!dominated) kept.push(pair);
   }
+
+  const merged = mergeClasses(kept);
+  const tokensByFile = new Map(files.map((file) => [file.rel, file.tokens]));
+  for (const clone of merged) {
+    if (clone.type === 3) continue;
+    const inside = (tokensByFile.get(clone.a.file) ?? []).filter(
+      (token) => token.start >= clone.a.start && token.end <= clone.a.end,
+    );
+    clone.entropy = Number(normalizedEntropy(inside).toFixed(2));
+    if (clone.repetitive) clone.reason = "sequência";
+    else if (clone.entropy < minEntropy) {
+      clone.repetitive = true;
+      clone.reason = "baixa variedade";
+    }
+  }
+  kept.length = 0;
+  kept.push(...merged);
 
   const fnByFile = new Map(files.map((file) => [file.rel, functionsOf(file.ast)]));
   for (const pair of kept) {

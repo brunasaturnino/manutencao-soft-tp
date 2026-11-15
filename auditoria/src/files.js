@@ -82,12 +82,21 @@ function walkExportNode(node, exact, patterns) {
   }
 }
 
+// Semântica de subpath patterns do Node: o `*` casa qualquer sequência de
+// caracteres, inclusive `/`. Por isso "./lib/*" torna públicos todos os
+// ficheiros de lib/, em qualquer profundidade.
 function patternToRegExp(pattern) {
-  const escaped = pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\\\*/g, "[^/]+");
+  const escaped = pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*+/g, ".+");
   return new RegExp(`^${escaped}$`);
 }
 
-export function readPublicSurface(root) {
+/**
+ * Superfície pública do pacote. `internalExports` lista chaves de `exports`
+ * (por exemplo "./unsafe/*") que o utilizador declara como internas: o que elas
+ * expõem deixa de contar como API. É uma decisão do utilizador, não da
+ * ferramenta, porque remover código assim pode quebrar quem importa esses caminhos.
+ */
+export function readPublicSurface(root, { internalExports = [] } = {}) {
   const pkgPath = path.join(root, "package.json");
   const exact = [];
   const patterns = [];
@@ -101,7 +110,14 @@ export function readPublicSurface(root) {
         if (typeof value === "string") exact.push(value);
       }
     }
-    walkExportNode(pkg.exports, exact, patterns);
+    const skipped = new Set(internalExports);
+    if (pkg.exports && typeof pkg.exports === "object" && !Array.isArray(pkg.exports)) {
+      for (const [key, value] of Object.entries(pkg.exports)) {
+        if (!skipped.has(key)) walkExportNode(value, exact, patterns);
+      }
+    } else {
+      walkExportNode(pkg.exports, exact, patterns);
+    }
   }
   const regexes = patterns.map(patternToRegExp);
   const files = new Set();

@@ -23,7 +23,7 @@ export function auditRepo(root, options = {}) {
   const testPaths = discoverTestFiles(root);
   const product = productPaths.map((abs) => load(root, abs, true));
   const tests = testPaths.map((abs) => load(root, abs, false));
-  const surface = readPublicSurface(root);
+  const surface = readPublicSurface(root, { internalExports: options.internalExports ?? [] });
   const dead = analyzeDead(product, tests, surface);
   const clones = findClones(
     product.filter((file) => file.ast),
@@ -45,6 +45,9 @@ export function auditRepo(root, options = {}) {
       similarity: clone.similarity,
       confirmedByAst: clone.confirmedByAst,
       detector: clone.detector,
+      repetitive: clone.repetitive,
+      reason: clone.reason,
+      entropy: clone.entropy,
       a: { file: clone.a.file, startLine: clone.a.startLine, endLine: clone.a.endLine },
       b: { file: clone.b.file, startLine: clone.b.startLine, endLine: clone.b.endLine },
       ranges: clone,
@@ -66,7 +69,8 @@ export function renderReport(report) {
     `Símbolos mortos: ${metrics.deadSymbols}`,
     `Instruções inalcançáveis: ${metrics.unreachableStatements}`,
     `Ficheiros não alcançáveis: ${metrics.deadFiles}`,
-    `Pares de clones: ${metrics.clonePairs}`,
+    `Classes de clones (sem repetições em sequência): ${metrics.clonePairs}`,
+    `Estruturas repetitivas (sequências, listas e tabelas; não contadas): ${metrics.repetitiveBlocks}`,
     `Dívida estimada de remediação: ${metrics.debtMinutes} min`,
     "",
     "Código morto e inalcançável:",
@@ -82,7 +86,7 @@ export function renderReport(report) {
   for (const clone of report.clones.slice(0, 40)) {
     const ast = clone.confirmedByAst ? "AST" : "só tokens";
     lines.push(
-      `  tipo ${clone.type}  ${clone.a.file}:${clone.a.startLine}-${clone.a.endLine}  ↔  ${clone.b.file}:${clone.b.startLine}-${clone.b.endLine}  (${clone.tokens} tokens, ${ast})`,
+      `  tipo ${clone.type}  ${clone.a.file}:${clone.a.startLine}-${clone.a.endLine}  ↔  ${clone.b.file}:${clone.b.startLine}-${clone.b.endLine}  (${clone.tokens} tokens, ${ast}${clone.repetitive ? `, repetitiva (${clone.reason})` : ""})`,
     );
   }
   if (report.clones.length > 40) lines.push(`  … ${report.clones.length - 40} pares omitidos`);

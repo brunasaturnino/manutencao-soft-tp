@@ -1,12 +1,43 @@
 {
-  "repo": "C:\\Users\\bruna\\Documents\\MANUTENÇÃO DE SOFT\\TP\\alvos\\axios",
+  "repo": "alvos/axios",
   "version": "axios 1.21.0",
   "reverted": false,
+  "internalExports": [
+    "./unsafe/*"
+  ],
   "alterations": [
+    {
+      "kind": "extract-shared-module",
+      "name": "decodeURIComponentSafe",
+      "file": "lib/adapters/fetch.js",
+      "module": "../helpers/decodeURIComponentSafe.js",
+      "line": 52
+    },
+    {
+      "kind": "extract-shared-module",
+      "name": "decodeURIComponentSafe",
+      "file": "lib/adapters/http.js",
+      "module": "../helpers/decodeURIComponentSafe.js",
+      "line": 272
+    },
+    {
+      "kind": "extract-shared-module",
+      "name": "trimOWS",
+      "file": "lib/core/AxiosHeaders.js",
+      "module": "../helpers/trimOWS.js",
+      "line": 35
+    },
+    {
+      "kind": "extract-shared-module",
+      "name": "trimSPorHTAB",
+      "file": "lib/helpers/sanitizeHeaderValue.js",
+      "module": "./trimOWS.js",
+      "line": 5
+    },
     {
       "kind": "dead-symbol",
       "name": "adapter",
-      "line": 747,
+      "line": 732,
       "file": "lib/adapters/fetch.js",
       "fix": "keep-init"
     },
@@ -24,95 +55,155 @@
     "cyclomaticComplexity": 2233,
     "halsteadVolume": 453891.3,
     "maintainabilityIndex": 44.5,
-    "duplicatedLines": 584,
-    "duplicationDensity": 0.0882,
+    "duplicatedLines": 343,
+    "duplicationDensity": 0.0518,
     "deadSymbols": 2,
     "unreachableStatements": 0,
     "deadFiles": 2,
-    "clonePairs": 91,
-    "debtMinutes": 1188
+    "clonePairs": 19,
+    "repetitiveBlocks": 11,
+    "debtMinutes": 706
   },
   "after": {
-    "files": 73,
-    "loc": 6607,
-    "cyclomaticComplexity": 2230,
-    "halsteadVolume": 452883.8,
-    "maintainabilityIndex": 45.1,
-    "duplicatedLines": 584,
-    "duplicationDensity": 0.0884,
+    "files": 75,
+    "loc": 6583,
+    "cyclomaticComplexity": 2218,
+    "halsteadVolume": 451621.4,
+    "maintainabilityIndex": 45.5,
+    "duplicatedLines": 252,
+    "duplicationDensity": 0.0383,
     "deadSymbols": 0,
     "unreachableStatements": 0,
     "deadFiles": 2,
-    "clonePairs": 91,
-    "debtMinutes": 1168
+    "clonePairs": 15,
+    "repetitiveBlocks": 11,
+    "debtMinutes": 504
   },
   "eslint": {
     "before": {
       "samples": [
         {
-          "ms": 1336,
+          "ms": 1158,
           "code": 0
         },
         {
-          "ms": 956,
+          "ms": 922,
           "code": 0
         },
         {
-          "ms": 1045,
+          "ms": 897,
           "code": 0
         },
         {
-          "ms": 1135,
+          "ms": 884,
+          "code": 0
+        },
+        {
+          "ms": 885,
+          "code": 0
+        },
+        {
+          "ms": 969,
+          "code": 0
+        },
+        {
+          "ms": 936,
+          "code": 0
+        },
+        {
+          "ms": 843,
+          "code": 0
+        },
+        {
+          "ms": 895,
+          "code": 0
+        },
+        {
+          "ms": 948,
+          "code": 0
+        },
+        {
+          "ms": 1001,
           "code": 0
         }
       ],
-      "averageMs": 1045,
+      "averageMs": 918,
+      "stdMs": 47,
       "ok": true
     },
     "after": {
       "samples": [
         {
-          "ms": 1130,
+          "ms": 903,
           "code": 0
         },
         {
-          "ms": 1024,
+          "ms": 765,
           "code": 0
         },
         {
-          "ms": 1016,
+          "ms": 973,
           "code": 0
         },
         {
-          "ms": 950,
+          "ms": 900,
+          "code": 0
+        },
+        {
+          "ms": 965,
+          "code": 0
+        },
+        {
+          "ms": 812,
+          "code": 0
+        },
+        {
+          "ms": 848,
+          "code": 0
+        },
+        {
+          "ms": 845,
+          "code": 0
+        },
+        {
+          "ms": 827,
+          "code": 0
+        },
+        {
+          "ms": 836,
+          "code": 0
+        },
+        {
+          "ms": 862,
           "code": 0
         }
       ],
-      "averageMs": 997,
+      "averageMs": 863,
+      "stdMs": 66,
       "ok": true
     }
   },
   "tests": {
     "before": {
       "code": 1,
-      "ms": 95365,
-      "failed": 1,
+      "ms": 91804,
+      "failed": 4,
       "coverage": {
-        "lines": 91.38,
-        "statements": 90.61,
-        "functions": 90.5,
-        "branches": 85.53
+        "lines": 91.84,
+        "statements": 91.05,
+        "functions": 90.81,
+        "branches": 86.24
       }
     },
     "after": {
       "code": 1,
-      "ms": 92900,
-      "failed": 1,
+      "ms": 88769,
+      "failed": 4,
       "coverage": {
-        "lines": 91.38,
-        "statements": 90.61,
-        "functions": 90.5,
-        "branches": 85.53
+        "lines": 91.83,
+        "statements": 91.03,
+        "functions": 90.78,
+        "branches": 86.25
       }
     }
   }

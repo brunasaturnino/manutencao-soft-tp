@@ -44,7 +44,7 @@ function decisionPoints(ast, traverse) {
 export function duplicatedLineCount(clones) {
   const lines = new Set();
   for (const clone of clones) {
-    if (clone.type === 3) continue;
+    if (clone.type === 3 || clone.repetitive) continue;
     for (const side of [clone.a, clone.b]) {
       for (let line = side.startLine; line <= side.endLine; line += 1) lines.add(`${side.file}:${line}`);
     }
@@ -125,7 +125,8 @@ export function computeMetrics(files, clones, dead, traverse) {
     deadSymbols,
     unreachableStatements: unreachable,
     deadFiles: dead.filter((item) => item.kind === "dead-file").length,
-    clonePairs: clones.length,
+    clonePairs: clones.filter((clone) => !clone.repetitive).length,
+    repetitiveBlocks: clones.filter((clone) => clone.repetitive).length,
     debtMinutes,
   };
 }

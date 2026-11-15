@@ -1,0 +1,184 @@
+[
+ {
+  "a": "lib/core/AxiosHeaders.js:33-60",
+  "b": "lib/helpers/sanitizeHeaderValue.js:3-30",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/helpers/estimateDataURLDecodedBytes.js:63-68",
+  "b": "lib/helpers/estimateDataURLDecodedBytes.js:84-90",
+  "tipo": 1,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:46-64",
+  "b": "lib/adapters/http.js:266-284",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:274-280",
+  "b": "lib/adapters/http.js:1026-1031",
+  "tipo": 1,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:46-64",
+  "b": "lib/adapters/http.js:266-284",
+  "tipo": 1,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:33-52",
+  "b": "lib/helpers/resolveConfig.js:10-25",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/http.js:687-692",
+  "b": "lib/helpers/resolveConfig.js:37-42",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:33-52",
+  "b": "lib/helpers/resolveConfig.js:10-25",
+  "tipo": 1,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/helpers/formDataToJSON.js:9-25",
+  "b": "lib/helpers/toFormData.js:152-161",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "index.js:6-23",
+  "b": "lib/utils.js:1137-1154",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "index.js:7-24",
+  "b": "index.js:28-45",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/core/AxiosHeaders.js:40-50",
+  "b": "lib/helpers/sanitizeHeaderValue.js:10-20",
+  "tipo": 1,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/http.js:695-700",
+  "b": "lib/helpers/resolveConfig.js:38-44",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/helpers/formDataToJSON.js:58-63",
+  "b": "lib/utils.js:524-530",
+  "tipo": 2,
+  "rotulo": "parcial",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/utils.js:51-58",
+  "b": "lib/utils.js:158-165",
+  "tipo": 2,
+  "rotulo": "parcial",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/http.js:884-890",
+  "b": "lib/adapters/http.js:1427-1432",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/core/Axios.js:255-264",
+  "b": "lib/core/Axios.js:304-313",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:659-665",
+  "b": "lib/core/AxiosError.js:170-176",
+  "tipo": 2,
+  "rotulo": "parcial",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/core/AxiosHeaders.js:270-276",
+  "b": "lib/core/AxiosHeaders.js:300-306",
+  "tipo": 2,
+  "rotulo": "parcial",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/utils.js:265-291",
+  "b": "lib/utils.js:401-420",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/core/methodList.js:1-14",
+  "b": "lib/helpers/parseHeaders.js:3-18",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/helpers/shouldBypassProxy.js:128-139",
+  "b": "lib/helpers/shouldBypassProxy.js:155-166",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/core/AxiosError.js:170-177",
+  "b": "lib/utils.js:717-724",
+  "tipo": 2,
+  "rotulo": "parcial",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:21-28",
+  "b": "lib/helpers/HttpStatusCode.js:1-8",
+  "tipo": 2,
+  "rotulo": "falso-positivo",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/http.js:1201-1210",
+  "b": "lib/adapters/http.js:1213-1222",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ },
+ {
+  "a": "lib/adapters/fetch.js:319-330",
+  "b": "lib/adapters/fetch.js:541-552",
+  "tipo": 2,
+  "rotulo": "real",
+  "avaliador": "A1"
+ }
+]

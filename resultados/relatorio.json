@@ -4,14 +4,15 @@
     "loc": 6623,
     "cyclomaticComplexity": 2233,
     "halsteadVolume": 453891.3,
-    "maintainabilityIndex": 0,
-    "duplicatedLines": 584,
-    "duplicationDensity": 0.0882,
-    "deadSymbols": 3,
+    "maintainabilityIndex": 44.5,
+    "duplicatedLines": 343,
+    "duplicationDensity": 0.0518,
+    "deadSymbols": 2,
     "unreachableStatements": 0,
     "deadFiles": 2,
-    "clonePairs": 91,
-    "debtMinutes": 1198
+    "clonePairs": 19,
+    "repetitiveBlocks": 11,
+    "debtMinutes": 706
   },
   "parseErrors": [],
   "dead": [
@@ -23,8 +24,14 @@
       "confidence": "high",
       "removable": true,
       "exported": true,
-      "reason": "Export «adapter» não é importado pelo entry público nem pelos testes. A inicialização tem efeito e é preservada.",
-      "fix": "keep-init"
+      "reason": "Export «adapter» não é importado pelo entry público nem pelos testes. A inicialização tem efeito e é preservada. O export default que só reexporta este nome é removido junto.",
+      "fix": "keep-init",
+      "extraRemoves": [
+        {
+          "start": 24053,
+          "end": 24076
+        }
+      ]
     },
     {
       "kind": "dead-file",
@@ -54,17 +61,6 @@
       "exported": true,
       "reason": "Export «deprecatedMethod» não é importado pelo entry público nem pelos testes.",
       "fix": "remove"
-    },
-    {
-      "kind": "dead-symbol",
-      "file": "lib/helpers/trackStream.js",
-      "line": 48,
-      "name": "bytes",
-      "confidence": "high",
-      "removable": true,
-      "exported": false,
-      "reason": "Variável «bytes» não é lida.",
-      "fix": "remove"
     }
   ],
   "clones": [
@@ -74,6 +70,8 @@
       "lines": 28,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.8,
       "a": {
         "file": "lib/core/AxiosHeaders.js",
         "startLine": 33,
@@ -91,6 +89,8 @@
       "lines": 6,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.35,
       "a": {
         "file": "lib/helpers/estimateDataURLDecodedBytes.js",
         "startLine": 63,
@@ -108,168 +108,18 @@
       "lines": 15,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "sequência",
+      "entropy": 1.5,
       "a": {
         "file": "lib/core/mergeConfig.js",
         "startLine": 157,
-        "endLine": 171
+        "endLine": 176
       },
       "b": {
         "file": "lib/core/mergeConfig.js",
-        "startLine": 172,
-        "endLine": 186
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 60,
-      "lines": 15,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 171
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 173,
+        "startLine": 165,
         "endLine": 187
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 56,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 170
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 171,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 169
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 170,
-        "endLine": 182
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 170
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 170,
-        "endLine": 183
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 158,
-        "endLine": 171
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 171,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 170
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 170,
-        "endLine": 183
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 158,
-        "endLine": 171
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 171,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 170
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 170,
-        "endLine": 183
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 52,
-      "lines": 14,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 158,
-        "endLine": 171
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 171,
-        "endLine": 184
       }
     },
     {
@@ -278,6 +128,8 @@
       "lines": 19,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.51,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 46,
@@ -295,6 +147,8 @@
       "lines": 6,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.16,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 274,
@@ -307,147 +161,13 @@
       }
     },
     {
-      "type": 2,
-      "tokens": 48,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 168
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 169,
-        "endLine": 180
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 161,
-        "endLine": 172
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 173,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 169
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 169,
-        "endLine": 181
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 160,
-        "endLine": 172
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 172,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 169
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 169,
-        "endLine": 181
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 160,
-        "endLine": 172
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 172,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 169
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 169,
-        "endLine": 181
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 48,
-      "lines": 13,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 160,
-        "endLine": 172
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 172,
-        "endLine": 184
-      }
-    },
-    {
       "type": 1,
       "tokens": 46,
       "lines": 19,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.46,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 46,
@@ -461,146 +181,12 @@
     },
     {
       "type": 2,
-      "tokens": 44,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 167
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 178
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 163,
-        "endLine": 173
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 174,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 168
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 179
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 162,
-        "endLine": 173
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 173,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 168
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 179
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 162,
-        "endLine": 173
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 173,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 168
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 179
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 44,
-      "lines": 12,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 162,
-        "endLine": 173
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 173,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
       "tokens": 43,
       "lines": 16,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.94,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 33,
@@ -618,6 +204,9 @@
       "lines": 7,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "sequência",
+      "entropy": 2.25,
       "a": {
         "file": "lib/core/AxiosError.js",
         "startLine": 263,
@@ -625,7 +214,7 @@
       },
       "b": {
         "file": "lib/core/AxiosError.js",
-        "startLine": 270,
+        "startLine": 268,
         "endLine": 276
       }
     },
@@ -635,6 +224,9 @@
       "lines": 6,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 2.72,
       "a": {
         "file": "lib/adapters/http.js",
         "startLine": 687,
@@ -652,9 +244,12 @@
       "lines": 7,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "sequência",
+      "entropy": 2.65,
       "a": {
         "file": "lib/adapters/http.js",
-        "startLine": 306,
+        "startLine": 303,
         "endLine": 312
       },
       "b": {
@@ -664,147 +259,13 @@
       }
     },
     {
-      "type": 2,
-      "tokens": 40,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 166
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 167,
-        "endLine": 176
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 165,
-        "endLine": 174
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 175,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 167
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 167,
-        "endLine": 177
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 164,
-        "endLine": 174
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 174,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 167
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 167,
-        "endLine": 177
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 164,
-        "endLine": 174
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 174,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 167
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 167,
-        "endLine": 177
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 40,
-      "lines": 11,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 164,
-        "endLine": 174
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 174,
-        "endLine": 184
-      }
-    },
-    {
       "type": 1,
       "tokens": 37,
       "lines": 16,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.94,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 33,
@@ -818,44 +279,12 @@
     },
     {
       "type": 2,
-      "tokens": 37,
-      "lines": 7,
-      "confirmedByAst": true,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/adapters/http.js",
-        "startLine": 303,
-        "endLine": 309
-      },
-      "b": {
-        "file": "lib/adapters/http.js",
-        "startLine": 312,
-        "endLine": 318
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
-      }
-    },
-    {
-      "type": 2,
       "tokens": 36,
       "lines": 10,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.4,
       "a": {
         "file": "lib/helpers/formDataToJSON.js",
         "startLine": 9,
@@ -869,146 +298,13 @@
     },
     {
       "type": 2,
-      "tokens": 36,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 165
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 174
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 167,
-        "endLine": 175
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 176,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 166
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 175,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 166
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 175,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 166
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 36,
-      "lines": 10,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 166,
-        "endLine": 175
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 175,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
       "tokens": 35,
       "lines": 18,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 1.16,
       "a": {
         "file": "index.js",
         "startLine": 6,
@@ -1026,6 +322,9 @@
       "lines": 18,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 1.16,
       "a": {
         "file": "index.js",
         "startLine": 7,
@@ -1043,6 +342,8 @@
       "lines": 11,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.73,
       "a": {
         "file": "lib/core/AxiosHeaders.js",
         "startLine": 40,
@@ -1060,6 +361,9 @@
       "lines": 6,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 2.74,
       "a": {
         "file": "lib/adapters/http.js",
         "startLine": 695,
@@ -1077,6 +381,8 @@
       "lines": 6,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.97,
       "a": {
         "file": "lib/helpers/formDataToJSON.js",
         "startLine": 58,
@@ -1094,6 +400,8 @@
       "lines": 8,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.96,
       "a": {
         "file": "lib/utils.js",
         "startLine": 51,
@@ -1111,6 +419,8 @@
       "lines": 6,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.29,
       "a": {
         "file": "lib/adapters/http.js",
         "startLine": 884,
@@ -1128,6 +438,8 @@
       "lines": 10,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.38,
       "a": {
         "file": "lib/core/Axios.js",
         "startLine": 255,
@@ -1145,6 +457,8 @@
       "lines": 7,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.07,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 659,
@@ -1162,6 +476,8 @@
       "lines": 7,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.06,
       "a": {
         "file": "lib/core/AxiosHeaders.js",
         "startLine": 270,
@@ -1179,6 +495,9 @@
       "lines": 20,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 2.81,
       "a": {
         "file": "lib/utils.js",
         "startLine": 265,
@@ -1196,6 +515,9 @@
       "lines": 14,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 2.32,
       "a": {
         "file": "lib/core/methodList.js",
         "startLine": 1,
@@ -1209,146 +531,12 @@
     },
     {
       "type": 2,
-      "tokens": 32,
-      "lines": 8,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 164
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 165,
-        "endLine": 172
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 8,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 169,
-        "endLine": 176
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 177,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 165
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 165,
-        "endLine": 173
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 176
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 176,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 165
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 165,
-        "endLine": 173
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 176
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 176,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 157,
-        "endLine": 165
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 165,
-        "endLine": 173
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 32,
-      "lines": 9,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 168,
-        "endLine": 176
-      },
-      "b": {
-        "file": "lib/core/mergeConfig.js",
-        "startLine": 176,
-        "endLine": 184
-      }
-    },
-    {
-      "type": 2,
       "tokens": 31,
       "lines": 12,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.5,
       "a": {
         "file": "lib/helpers/shouldBypassProxy.js",
         "startLine": 128,
@@ -1366,6 +554,8 @@
       "lines": 8,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.96,
       "a": {
         "file": "lib/core/AxiosError.js",
         "startLine": 170,
@@ -1383,6 +573,9 @@
       "lines": 6,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "sequência",
+      "entropy": 3.5,
       "a": {
         "file": "lib/adapters/http.js",
         "startLine": 1325,
@@ -1400,6 +593,9 @@
       "lines": 8,
       "confirmedByAst": false,
       "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 2.42,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 21,
@@ -1417,6 +613,8 @@
       "lines": 10,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.25,
       "a": {
         "file": "lib/adapters/http.js",
         "startLine": 1201,
@@ -1431,43 +629,11 @@
     {
       "type": 2,
       "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 268,
-        "endLine": 273
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 264,
-        "endLine": 269
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
       "lines": 12,
       "confirmedByAst": true,
       "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.37,
       "a": {
         "file": "lib/adapters/fetch.js",
         "startLine": 319,
@@ -1477,142 +643,6 @@
         "file": "lib/adapters/fetch.js",
         "startLine": 541,
         "endLine": 552
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 268,
-        "endLine": 273
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 264,
-        "endLine": 269
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 268,
-        "endLine": 273
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 264,
-        "endLine": 269
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 268,
-        "endLine": 273
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 264,
-        "endLine": 269
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 263,
-        "endLine": 268
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 268,
-        "endLine": 273
-      }
-    },
-    {
-      "type": 2,
-      "tokens": 30,
-      "lines": 6,
-      "confirmedByAst": false,
-      "detector": "rabin-karp",
-      "a": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 264,
-        "endLine": 269
-      },
-      "b": {
-        "file": "lib/core/AxiosError.js",
-        "startLine": 269,
-        "endLine": 274
       }
     }
   ]
