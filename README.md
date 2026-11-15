@@ -6,32 +6,47 @@ Trabalho de Manutenção de Software. Uma ferramenta em Node.js que audita um pr
 - `resultados/`: o que ela produziu no axios. Comece por `RELATORIO.md` (métricas antes e depois) e `COMPARACAO.md` (comparação com jscpd e Knip).
 
 ## Requisitos
-- Node.js (testado com a versão 22) e git.
-- Para o comando `evaluate`, o projeto alvo precisa ser um repositório git com as dependências instaladas e o provedor de cobertura do Vitest:
+- Node.js e git. A ferramenta só usa módulos padrão do Node e foi testada **apenas com a versão 22, em Linux**. Em Windows e macOS não foi testada.
+- Acesso à internet para o `npm install` e, no `evaluate`, para o `npm ci` do axios.
+- Para o comando `evaluate`, o projeto alvo precisa ser um repositório git com as dependências instaladas e o provedor de cobertura do Vitest.
 
-```bash
+Preparar o axios (rode na **raiz deste repositório**; funciona em bash e no PowerShell):
+
+```
 git clone --depth 1 --branch v1.21.0 https://github.com/axios/axios alvos/axios
 cd alvos/axios
 npm ci --ignore-scripts
-npm i --no-save --ignore-scripts @vitest/coverage-v8@$(node -p "require('./node_modules/vitest/package.json').version")
+node -p "require('./node_modules/vitest/package.json').version"
 ```
 
+O último comando imprime a versão do Vitest (por exemplo `4.1.11`). Use-a no comando seguinte, no lugar de `VERSAO`:
+
+```
+npm i --no-save --ignore-scripts @vitest/coverage-v8@VERSAO
+cd ../../auditoria
+```
+
+A pasta `alvos/` está no `.gitignore`.
+
 ## Instalação e testes da ferramenta
-```bash
+```
 cd auditoria
 npm install
 npm test
 ```
+Deve terminar com `pass 6` e `fail 0`.
 
 ## Uso
 Os três comandos recebem `--repo` (projeto alvo) e `--out` (pasta de saída). O padrão de `--repo` é `../alvos/axios`, relativo à raiz deste repositório.
 
-```bash
+Todos os comandos abaixo são rodados dentro de `auditoria/`. No PowerShell as aspas simples em `'./unsafe/*'` funcionam; no `cmd.exe` use aspas duplas.
+
+```
 # 1. Só analisa e gera relatorio.txt e relatorio.json (não altera o projeto)
-node src/cli.js scan --repo ../alvos/axios --out ../resultados
+node src/cli.js scan --repo ../alvos/axios --out ../resultados --internal-export './unsafe/*'
 
 # 2. Analisa e aplica as refatorações no projeto (altera os arquivos!)
-node src/cli.js apply --repo ../alvos/axios --out ../resultados
+node src/cli.js apply --repo ../alvos/axios --out ../resultados --internal-export './unsafe/*'
 
 # 3. Mede, aplica, mede de novo, reverte se algo quebrar e gera o relatório completo
 node src/cli.js evaluate --repo ../alvos/axios --out ../resultados --internal-export './unsafe/*'
@@ -43,25 +58,37 @@ Opções: `--min-tokens` (padrão 30) e `--min-lines` (padrão 6) ajustam o tama
 
 Um quarto comando, `relatorio`, regenera só o `RELATORIO.md` a partir do `avaliacao.json` já gravado:
 
-```bash
+```
 node src/cli.js relatorio --out ../resultados
 ```
+
+**Para conferir que está funcionando:** o `scan` acima, no axios 1.21.0, deve mostrar 343 linhas em clones, 19 classes de clones e 2 símbolos mortos. Sem o `--internal-export`, os símbolos mortos caem para 0 (ver acima). O tempo do ESLint e a contagem de testes que falham mudam de máquina para máquina: 4 testes do axios dependem de rede e podem passar ou falhar de forma diferente na sua rede; o `evaluate` só compara antes e depois.
 
 Atenção: `apply` e `evaluate` **modificam** o projeto alvo. Trabalhe numa cópia. O `evaluate` demora vários minutos (suíte de testes com cobertura duas vezes e 10 execuções do ESLint por lado) e aborta sem alterar nada se a suíte não conseguir rodar antes da limpeza.
 
 Gabarito de revocação (injeta 40 clones conhecidos numa cópia de `lib/` e mede quantos a ferramenta acha; `--jscpd` compara com o jscpd, que precisa de rede para o `npx`):
 
-```bash
+```
+# Linux e macOS
 node bench/gabarito.js --repo ../alvos/axios --work /tmp/gabarito --out /tmp/gabarito.json --seed 1 --jscpd
+
+# PowerShell
+node bench/gabarito.js --repo ../alvos/axios --work $env:TEMP\gabarito --out $env:TEMP\gabarito.json --seed 1 --jscpd
 ```
 
 A pasta de `--work` não pode existir. Os resultados de 3 sementes estão em `resultados/comparacao/`.
 
-Demonstração rápida, sem precisar do axios:
+Demonstração rápida, sem precisar do axios (dentro de `auditoria/`). O `scan` não altera nada; o `apply` altera a pasta indicada, então use uma cópia:
 
-```bash
-node src/cli.js scan --repo fixtures/mini --out /tmp/mini --min-tokens 20 --min-lines 4
 ```
+# Linux e macOS
+node src/cli.js scan --repo fixtures/mini --out /tmp/mini --min-tokens 20 --min-lines 4
+
+# PowerShell
+node src/cli.js scan --repo fixtures/mini --out $env:TEMP\mini --min-tokens 20 --min-lines 4
+```
+
+Resultado esperado: 5 arquivos analisados, 7 símbolos mortos, 4 instruções inalcançáveis e 3 classes de clones. Para ver a refatoração, copie `fixtures/mini` para outra pasta e rode o `apply` nela (`cp -r fixtures/mini /tmp/demo` ou `Copy-Item -Recurse fixtures\mini $env:TEMP\demo`): ele faz 12 alterações.
 
 ## O que a ferramenta faz
 | Módulo | Função |

@@ -217,7 +217,8 @@ function evaluateJscpd() {
   const run = spawnSync(
     "npx",
     ["--yes", "jscpd@5.4.3", "lib", "--min-tokens", "30", "--min-lines", "6", "--max-size", "5mb", "--max-lines", "100000", "--reporters", "json", "--output", out, "--silent"],
-    { cwd: work, encoding: "utf8" },
+    // No Windows o npx é um .cmd, que o spawn só executa por meio do shell.
+    { cwd: work, encoding: "utf8", shell: process.platform === "win32" },
   );
   const file = path.join(out, "jscpd-report.json");
   if (!fs.existsSync(file)) return { error: run.stderr.slice(-300) };
