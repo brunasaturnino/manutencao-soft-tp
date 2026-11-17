@@ -1,0 +1,32 @@
+
+> debug@4.4.3 test:node
+> mocha test.js test.node.js
+
+
+
+  debug
+    ✓ passes a basic sanity check
+    ✓ allows namespaces to be a non-string value
+    ✓ honors global debug namespace enable calls
+    ✓ uses custom log function
+    extend namespace
+      ✓ should extend namespace
+      ✓ should extend namespace with custom delimiter
+      ✓ should extend namespace with empty delimiter
+      ✓ should keep the log function between extensions
+    rebuild namespaces string (disable)
+      ✓ handle names, skips, and wildcards
+      ✓ handles empty
+      ✓ handles all
+      ✓ handles skip all
+      ✓ names+skips same with new string
+      ✓ handles re-enabling existing instances
+
+  debug node
+    formatting options
+      ✓ calls util.formatWithOptions
+      ✓ calls util.formatWithOptions with inspectOpts
+
+
+  16 passing (19ms)
+

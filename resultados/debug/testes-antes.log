@@ -1,0 +1,69 @@
+
+> debug@4.4.3 test
+> npm run test:node && npm run test:browser && npm run lint
+
+
+> debug@4.4.3 test:node
+> mocha test.js test.node.js
+
+
+
+  debug
+    ✓ passes a basic sanity check
+    ✓ allows namespaces to be a non-string value
+    ✓ honors global debug namespace enable calls
+    ✓ uses custom log function
+    extend namespace
+      ✓ should extend namespace
+      ✓ should extend namespace with custom delimiter
+      ✓ should extend namespace with empty delimiter
+      ✓ should keep the log function between extensions
+    rebuild namespaces string (disable)
+      ✓ handle names, skips, and wildcards
+      ✓ handles empty
+      ✓ handles all
+      ✓ handles skip all
+      ✓ names+skips same with new string
+      ✓ handles re-enabling existing instances
+
+  debug node
+    formatting options
+      ✓ calls util.formatWithOptions
+      ✓ calls util.formatWithOptions with inspectOpts
+
+
+  16 passing (18ms)
+
+
+> debug@4.4.3 test:browser
+> karma start --single-run
+
+[36m16 11 2026 20:40:28.164:DEBUG [config]: [39mLoading config /tmp/auditoria-debug-eval/karma.conf.js
+[36m16 11 2026 20:40:28.168:DEBUG [config]: [39mautoWatch set to false, because of singleRun
+[36m16 11 2026 20:40:28.169:DEBUG [karma-server]: [39mFinal config [{"LOG_DISABLE":"1","LOG_ERROR":"2","LOG_WARN":"3","LOG_INFO":"4","LOG_DEBUG":"5","frameworks":"6","protocol":"7","port":9876,"listenAddress":"8","hostname":"9","httpsServerConfig":"10","basePath":"11","files":"12","browserConsoleLogOptions":"13","customContextFile":null,"customDebugFile":null,"customClientContextFile":null,"exclude":"14","logLevel":"5","colors":true,"autoWatch":false,"autoWatchBatchDelay":250,"restartOnFileChange":false,"usePolling":true,"reporters":"15","singleRun":true,"browsers":"16","captureTimeout":60000,"proxies":"17","proxyValidateSSL":true,"preprocessors":"18","urlRoot":"19","reportSlowerThan":0,"loggers":"20","transports":"21","forceJSONP":false,"plugins":"22","client":"23","defaultClient":"23","browserDisconnectTimeout":2000,"browserDisconnectTolerance":0,"browserNoActivityTimeout":30000,"processKillTimeout":2000,"concurrency":1,"failOnEmptyTestSuite":true,"retryLimit":2,"detached":false,"crossOriginAttribute":true,"browserSocketTimeout":20000,"cmd":"24","configFile":"25","customLaunchers":"26","browserify":"27"},"OFF","ERROR","WARN","INFO","DEBUG",["28","29"],"http:","0.0.0.0","localhost",{},"/tmp/auditoria-debug-eval",["30","31","32"],{"level":"33","format":"34","terminal":true},["25"],["35"],["36"],{},{"/tmp/auditoria-debug-eval/{{!(node_modules),*.js},!(node_modules)/**/*.js}":"37"},"/",["38"],["39","40"],["41","42"],{"args":"43","useIframe":true,"runInParent":false,"captureConsole":true,"clearContext":true},"start","/tmp/auditoria-debug-eval/karma.conf.js",{"HeadlessChrome":"44"},{"debug":true,"transform":"45"},"browserify","mocha",{"pattern":"46","served":true,"included":true,"watched":true,"nocache":false,"weight":"47"},{"pattern":"48","served":true,"included":true,"watched":true,"nocache":false,"weight":"49"},{"pattern":"50","served":true,"included":true,"watched":true,"nocache":false,"weight":"51"},"debug","%b %T: %m","progress","HeadlessChrome",["28"],{"type":"52","layout":"53"},"polling","websocket","karma-*",{"launcher:HeadlessChrome":"54"},[],{"base":"55","flags":"56"},["57"],"/tmp/auditoria-debug-eval/src/browser.js",[1,0,0,0,0,0],"/tmp/auditoria-debug-eval/src/common.js",[1,0,0,0,0,0],"/tmp/auditoria-debug-eval/test.js",[1,0,0,0,0,0],"console",{"type":"58","pattern":"59"},["60",null],"ChromeHeadless",["61"],"brfs","pattern","%[%d{DATE}:%p [%c]: %]%m","factory","--no-sandbox"]
+[36m16 11 2026 20:40:28.169:DEBUG [plugin]: [39mLoading karma-* from /tmp/auditoria-debug-eval/node_modules
+[36m16 11 2026 20:40:28.170:DEBUG [plugin]: [39mLoading plugin /tmp/auditoria-debug-eval/node_modules/karma-browserify.
+[36m16 11 2026 20:40:28.234:DEBUG [plugin]: [39mLoading plugin /tmp/auditoria-debug-eval/node_modules/karma-chrome-launcher.
+[36m16 11 2026 20:40:28.993:DEBUG [plugin]: [39mLoading plugin /tmp/auditoria-debug-eval/node_modules/karma-mocha.
+[36m16 11 2026 20:40:28.994:DEBUG [plugin]: [39mLoading inlined plugin (defining launcher:HeadlessChrome).
+[36m16 11 2026 20:40:29.007:DEBUG [framework.browserify]: [39mcreated browserify bundle: /tmp/2a8a3ff9d5227d2ce0cd7f13a1db3639.browserify.js
+[36m16 11 2026 20:40:29.017:DEBUG [framework.browserify]: [39madd bundle to config.files at position 0
+[36m16 11 2026 20:40:29.019:DEBUG [web-server]: [39mInstantiating middleware
+[36m16 11 2026 20:40:29.042:DEBUG [framework.browserify]: [39mbuilding bundle
+[36m16 11 2026 20:40:29.044:DEBUG [framework.browserify]: [39mupdating src/browser.js in bundle
+[36m16 11 2026 20:40:29.044:DEBUG [framework.browserify]: [39mupdating src/common.js in bundle
+[36m16 11 2026 20:40:29.044:DEBUG [framework.browserify]: [39mupdating test.js in bundle
+[36m16 11 2026 20:40:29.745:DEBUG [framework.browserify]: [39mbundling
+[32m16 11 2026 20:40:29.965:INFO [framework.browserify]: [39mbundle built
+[32m16 11 2026 20:40:29.967:INFO [karma-server]: [39mKarma v3.1.4 server started at http://0.0.0.0:9876/
+[32m16 11 2026 20:40:29.967:INFO [launcher]: [39mLaunching browsers HeadlessChrome with concurrency 1
+[32m16 11 2026 20:40:29.971:INFO [launcher]: [39mStarting browser ChromeHeadless
+[36m16 11 2026 20:40:29.971:DEBUG [temp-dir]: [39mCreating temp dir at /tmp/karma-87214533
+[91m16 11 2026 20:40:29.972:ERROR [launcher]: [39mNo binary for ChromeHeadless browser on your platform.
+  Please, set "CHROME_BIN" env variable.
+[36m16 11 2026 20:40:29.972:DEBUG [temp-dir]: [39mCleaning temp dir /tmp/karma-87214533
+[36m16 11 2026 20:40:29.973:DEBUG [launcher]: [39mChromeHeadless failed (no binary). Not restarting.
+[36m16 11 2026 20:40:29.974:DEBUG [karma-server]: [39mRun complete, exiting.
+[36m16 11 2026 20:40:29.974:DEBUG [launcher]: [39mDisconnecting all browsers
+[36m16 11 2026 20:40:29.975:DEBUG [framework.browserify]: [39mcleaning up
+

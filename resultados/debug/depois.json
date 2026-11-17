@@ -1,0 +1,109 @@
+{
+  "metrics": {
+    "files": 5,
+    "loc": 552,
+    "cyclomaticComplexity": 127,
+    "halsteadVolume": 25174.2,
+    "maintainabilityIndex": 34.6,
+    "duplicatedLines": 35,
+    "duplicationDensity": 0.0634,
+    "deadSymbols": 0,
+    "unreachableStatements": 0,
+    "deadFiles": 1,
+    "clonePairs": 2,
+    "repetitiveBlocks": 2,
+    "debtMinutes": 70
+  },
+  "parseErrors": [],
+  "dead": [
+    {
+      "kind": "dead-file",
+      "file": "karma.conf.js",
+      "line": 1,
+      "name": "karma.conf.js",
+      "confidence": "medium",
+      "removable": false,
+      "reason": "Módulo não alcançável a partir dos entry points públicos nem dos testes. Não é apagado: pode ser carregado por caminho dinâmico."
+    }
+  ],
+  "clones": [
+    {
+      "type": 2,
+      "tokens": 158,
+      "lines": 78,
+      "confirmedByAst": false,
+      "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 1.33,
+      "a": {
+        "file": "src/browser.js",
+        "startLine": 27,
+        "endLine": 104
+      },
+      "b": {
+        "file": "src/node.js",
+        "startLine": 35,
+        "endLine": 112
+      }
+    },
+    {
+      "type": 2,
+      "tokens": 41,
+      "lines": 7,
+      "confirmedByAst": false,
+      "detector": "rabin-karp",
+      "repetitive": true,
+      "reason": "baixa variedade",
+      "entropy": 1.77,
+      "a": {
+        "file": "src/common.js",
+        "startLine": 8,
+        "endLine": 14
+      },
+      "b": {
+        "file": "src/node.js",
+        "startLine": 6,
+        "endLine": 18
+      }
+    },
+    {
+      "type": 2,
+      "tokens": 32,
+      "lines": 12,
+      "confirmedByAst": false,
+      "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 3.09,
+      "a": {
+        "file": "src/browser.js",
+        "startLine": 255,
+        "endLine": 266
+      },
+      "b": {
+        "file": "src/node.js",
+        "startLine": 237,
+        "endLine": 248
+      }
+    },
+    {
+      "type": 2,
+      "tokens": 31,
+      "lines": 9,
+      "confirmedByAst": false,
+      "detector": "rabin-karp",
+      "repetitive": false,
+      "entropy": 2.97,
+      "a": {
+        "file": "src/node.js",
+        "startLine": 242,
+        "endLine": 250
+      },
+      "b": {
+        "file": "src/node.js",
+        "startLine": 254,
+        "endLine": 262
+      }
+    }
+  ]
+}

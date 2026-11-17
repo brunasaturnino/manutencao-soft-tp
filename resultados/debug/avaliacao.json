@@ -1,0 +1,99 @@
+{
+  "repo": "/tmp/auditoria-debug-eval",
+  "project": {
+    "name": "debug",
+    "version": "4.4.3",
+    "packageManager": "npm"
+  },
+  "commit": "666dbc5",
+  "status": "aborted",
+  "reason": "O script de testes falhou antes das refatorações. O script de lint falhou antes das refatorações. Nada foi alterado.",
+  "reverted": false,
+  "internalExports": [],
+  "alterations": [],
+  "before": {
+    "files": 5,
+    "loc": 552,
+    "cyclomaticComplexity": 127,
+    "halsteadVolume": 25174.2,
+    "maintainabilityIndex": 34.6,
+    "duplicatedLines": 35,
+    "duplicationDensity": 0.0634,
+    "deadSymbols": 0,
+    "unreachableStatements": 0,
+    "deadFiles": 1,
+    "clonePairs": 2,
+    "repetitiveBlocks": 2,
+    "debtMinutes": 70
+  },
+  "after": null,
+  "lint": {
+    "before": {
+      "available": true,
+      "command": "npm run lint",
+      "samples": [
+        {
+          "ms": 1414,
+          "code": 1
+        },
+        {
+          "ms": 1357,
+          "code": 1
+        },
+        {
+          "ms": 1348,
+          "code": 1
+        },
+        {
+          "ms": 1339,
+          "code": 1
+        },
+        {
+          "ms": 1379,
+          "code": 1
+        },
+        {
+          "ms": 1351,
+          "code": 1
+        },
+        {
+          "ms": 1402,
+          "code": 1
+        },
+        {
+          "ms": 1342,
+          "code": 1
+        },
+        {
+          "ms": 1347,
+          "code": 1
+        },
+        {
+          "ms": 1346,
+          "code": 1
+        },
+        {
+          "ms": 1350,
+          "code": 1
+        }
+      ],
+      "averageMs": 1356,
+      "stdMs": 20,
+      "ok": false,
+      "error": null,
+      "tail": "\n> debug@4.4.3 lint\n> xo\n\n\n  src/common.js:53:2\n  ⚠   53:2   Missing JSDoc return description.                    valid-jsdoc\n  ⚠   56:4   Missing JSDoc parameter description for namespace.   valid-jsdoc\n  ⚠  120:40  Unexpected xxx comment.                              no-warning-comments\n  ⚠  159:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc\n  ⚠  184:2   Missing JSDoc return description.                    valid-jsdoc\n  ⚠  188:5   Missing JSDoc parameter description for search.      valid-jsdoc\n  ⚠  189:5   Missing JSDoc parameter description for template.    valid-jsdoc\n  ⚠  242:2   Missing JSDoc return description.                    valid-jsdoc\n  ⚠  245:4   Missing JSDoc parameter description for name.        valid-jsdoc\n  ⚠  265:2   Missing JSDoc return description.                    valid-jsdoc\n  ⚠  268:4   Missing JSDoc parameter description for val.         valid-jsdoc\n\n  src/node.js:200:4\n  ⚠  200:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc\n\n  src/browser.js:197:4\n  ⚠  197:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc\n  ⚠  209:3   Unexpected xxx comment.                              no-warning-comments\n  ⚠  225:3   Unexpected xxx comment.                              no-warning-comments\n  ⚠  254:3   Unexpected xxx comment.                              no-warning-comments\n  ✖  222:76  Unexpected whitespace before semicolon.              semi-spacing\n\n  16 warnings\n  1 error\n\n"
+    },
+    "after": null
+  },
+  "tests": {
+    "before": {
+      "command": "npm run test",
+      "code": 1,
+      "ms": 3687,
+      "error": null,
+      "coverage": null,
+      "coverageReason": null
+    },
+    "after": null
+  }
+}

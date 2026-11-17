@@ -1,0 +1,31 @@
+
+> debug@4.4.3 lint
+> xo
+
+
+  src/common.js:53:2
+  ⚠   53:2   Missing JSDoc return description.                    valid-jsdoc
+  ⚠   56:4   Missing JSDoc parameter description for namespace.   valid-jsdoc
+  ⚠  120:40  Unexpected xxx comment.                              no-warning-comments
+  ⚠  159:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc
+  ⚠  184:2   Missing JSDoc return description.                    valid-jsdoc
+  ⚠  188:5   Missing JSDoc parameter description for search.      valid-jsdoc
+  ⚠  189:5   Missing JSDoc parameter description for template.    valid-jsdoc
+  ⚠  242:2   Missing JSDoc return description.                    valid-jsdoc
+  ⚠  245:4   Missing JSDoc parameter description for name.        valid-jsdoc
+  ⚠  265:2   Missing JSDoc return description.                    valid-jsdoc
+  ⚠  268:4   Missing JSDoc parameter description for val.         valid-jsdoc
+
+  src/node.js:200:4
+  ⚠  200:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc
+
+  src/browser.js:197:4
+  ⚠  197:4   Missing JSDoc parameter description for namespaces.  valid-jsdoc
+  ⚠  209:3   Unexpected xxx comment.                              no-warning-comments
+  ⚠  225:3   Unexpected xxx comment.                              no-warning-comments
+  ⚠  254:3   Unexpected xxx comment.                              no-warning-comments
+  ✖  222:76  Unexpected whitespace before semicolon.              semi-spacing
+
+  16 warnings
+  1 error
+

@@ -1,0 +1,22 @@
+Ficheiros analisados: 5
+Linhas de código: 552
+Complexidade ciclomática: 127
+Volume de Halstead: 25174.2
+Índice de manutenibilidade (0–100): 34.6
+Linhas em clones de tipo 1 ou 2: 35
+Densidade de duplicação: 0.0634
+Símbolos mortos: 0
+Instruções inalcançáveis: 0
+Ficheiros não alcançáveis: 1
+Classes de clones (sem repetições em sequência): 2
+Estruturas repetitivas (sequências, listas e tabelas; não contadas): 2
+Dívida estimada de remediação: 70 min
+
+Código morto e inalcançável:
+  karma.conf.js:1  karma.conf.js  [dead-file]  Módulo não alcançável a partir dos entry points públicos nem dos testes. Não é apagado: pode ser carregado por caminho dinâmico.
+
+Duplicação:
+  tipo 2  src/browser.js:27-104  ↔  src/node.js:35-112  (158 tokens, só tokens, repetitiva (baixa variedade))
+  tipo 2  src/common.js:8-14  ↔  src/node.js:6-18  (41 tokens, só tokens, repetitiva (baixa variedade))
+  tipo 2  src/browser.js:255-266  ↔  src/node.js:237-248  (32 tokens, só tokens)
+  tipo 2  src/node.js:242-250  ↔  src/node.js:254-262  (31 tokens, só tokens)
